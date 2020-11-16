@@ -580,6 +580,10 @@ contexts:
       comment: 'Marks end of a [DOIF] or [DOIF]/[ELSE] statement'
       scope: keyword.control.caos
 
+    - match: '(\b([Ee][Nn][Dd][Mm])\b)'
+      comment: 'Compulsory command at end of macro, placed there by Macro constructor Macro is terminated and maybe\nself-destructs only [STOP] (never [ENDM]) commands may be placed in the body of macro. [ENDM] is\nstring terminator'
+      scope: keyword.control.caos
+
     - match: '(\b([Ee][Nn][Uu][Mm])\b)'
       comment: '[ENUM]...[NEXT]\nIterate through each object which conforms to the given classification,\nsetting\n[TARG] to point to each valid object in turn.\nFamily, Genus and/or Species can be zero to act as\nwildcards.'
       scope: keyword.control.caos
@@ -892,6 +896,10 @@ contexts:
     - match: '(\b([Ii][Nn][Ss][Tt])\b)'
       comment: 'Make the rest of this macro execute in a single tick.\nThis is used to ensure the creation of an\nobject (for example) is not interrupted during the scheduling of concurrent scripts'
       scope: entity.name.function.caos
+
+    - match: '(\b([Ii][Ss][Cc][Rr])\b)'
+      comment: 'Marks the following chunk of script as being for the installation of an object.\nThe presence of\n[SCRP], [RSCR] or [ENDM] is used to delimit the installation chunk'
+      scope: keyword.control.caos
 
     - match: '(\b([Jj][Ee][Cc][Tt])\b)'
       comment: 'JECT (command) COS_FILE (string) FLAGS (integer)\nInjects a COS file from the bootstrap directory.\nThe file is searched for (case insensitively) in all bootstrap subdirectories. You must specify the\nfile extension (it doesn''t have to be .cos). Flags is a combination of what you want to inject:\n1 -\nRemove sctipt\n2 - Event scripts\n4 - Install script\nThe scripts (if present) are injected in that\norder. So, setting flags to 7 will fully uninstall and reinstall the cos file. Error messages and\noutput are written to the current output stream.'
@@ -1460,6 +1468,10 @@ contexts:
       scope: entity.name.function.caos
       push: [rvalue,rvalue]
 
+    - match: '(\b([Rr][Ss][Cc][Rr])\b)'
+      comment: 'Marks the following chunk of scripts as being for the removal of an object.\nThe presence of [SCRP],\n[ISCR] or [ENDM] is used to delimit the removal chunk'
+      scope: keyword.control.caos
+
     - match: '(\b([Rr][Tt][Aa][Rr])\b)'
       comment: 'Randomly selects a member from the given classification and sets it as [TARG]. Null if no members\nexist'
       scope: entity.name.function.caos
@@ -1865,11 +1877,11 @@ contexts:
       comment: Joins two equality statements
     - match: '\s+'
       scope: text
-      
+
     - match: '\b([^ ]+)\b'
       scope: invalid.illegal.caos
       pop: true
-      
+
 
   lvalue:
     - match: '\s*\*.*$'
@@ -1940,11 +1952,11 @@ contexts:
       pop: true
     - match: '\s+'
       scope: text
-      
+
     - match: '\b([^ ]+)\b'
       scope: invalid.illegal.caos
       pop: true
-      
+
 
   rvalue:
     - match: '\s*\*.*$'
@@ -1963,7 +1975,7 @@ contexts:
     - match: '(\[)([^\]]*)(\])'
       scope: string.quoted.other.c1.caos
       pop: true
-      
+
      # Numbers
     - match: '[-+]?[0-9]*\.[0-9]+'
       scope: constant.numeric.float.caos
@@ -1976,10 +1988,10 @@ contexts:
     - match: '%[01]+'
       scope: constant.numeric.integer.binary.caos
       pop: true
-      
+
     - match: '\s+'
       scope: text
-      
+
     - match: ','
       scope: punctuation.terminator
 
@@ -3763,11 +3775,11 @@ contexts:
       scope: entity.name.constant.rvalue.caos
     - match: '\s+'
       scope: text
-      
+
     - match: '\b([^ ]+)\b'
       scope: invalid.illegal.caos
       pop: true
-      
+
 
   token:
     - match: '\s*\*.*$'
@@ -3807,8 +3819,8 @@ contexts:
 
     - match: '"'
       pop: true
-      
-  
+
+
   eqOp:
     - match: '\b[Ee][Qq]\b|='
       scope:  keyword.control.conditional.caos
@@ -3824,7 +3836,7 @@ contexts:
       scope:  keyword.control.conditional.caos
       pop: true
       comment: Greate Than/Equal
-      
+
     - match: '\b[Gg][Tt]\b|>'
       scope:  keyword.control.conditional.caos
       pop: true
@@ -3834,7 +3846,7 @@ contexts:
       scope:  keyword.control.conditional.caos
       pop: true
       comment: Less Than/Equal
-      
+
     - match: '\b[Ll][Tt]\b|<'
       scope:  keyword.control.conditional.caos
       pop: true
@@ -3854,4 +3866,3 @@ contexts:
     - match: '\b([^ ]+)\b'
       scope: invalid.illegal.caos
       pop: true
-      
