@@ -1940,11 +1940,11 @@ contexts:
       comment: Joins two equality statements
     - match: '\s+'
       scope: text
-      
+
     - match: '\b([^ ]+)\b'
       scope: invalid.illegal.caos
       pop: true
-      
+
 
   lvalue:
     - match: '\s*\*.*$'
@@ -2015,11 +2015,11 @@ contexts:
       pop: true
     - match: '\s+'
       scope: text
-      
+
     - match: '\b([^ ]+)\b'
       scope: invalid.illegal.caos
       pop: true
-      
+
 
   rvalue:
     - match: '\s*\*.*$'
@@ -2038,7 +2038,7 @@ contexts:
     - match: '(\[)([^\]]*)(\])'
       scope: string.quoted.other.c1.caos
       pop: true
-      
+
      # Numbers
     - match: '[-+]?[0-9]*\.[0-9]+'
       scope: constant.numeric.float.caos
@@ -2051,10 +2051,10 @@ contexts:
     - match: '%[01]+'
       scope: constant.numeric.integer.binary.caos
       pop: true
-      
+
     - match: '\s+'
       scope: text
-      
+
     - match: ','
       scope: punctuation.terminator
 
@@ -3916,11 +3916,11 @@ contexts:
       scope: entity.name.constant.rvalue.caos
     - match: '\s+'
       scope: text
-      
+
     - match: '\b([^ ]+)\b'
       scope: invalid.illegal.caos
       pop: true
-      
+
 
   token:
     - match: '\s*\*.*$'
@@ -3960,8 +3960,8 @@ contexts:
 
     - match: '"'
       pop: true
-      
-  
+
+
   eqOp:
     - match: '\b[Ee][Qq]\b|='
       scope:  keyword.control.conditional.caos
@@ -3977,7 +3977,7 @@ contexts:
       scope:  keyword.control.conditional.caos
       pop: true
       comment: Greate Than/Equal
-      
+
     - match: '\b[Gg][Tt]\b|>'
       scope:  keyword.control.conditional.caos
       pop: true
@@ -3987,7 +3987,7 @@ contexts:
       scope:  keyword.control.conditional.caos
       pop: true
       comment: Less Than/Equal
-      
+
     - match: '\b[Ll][Tt]\b|<'
       scope:  keyword.control.conditional.caos
       pop: true
@@ -4007,4 +4007,3 @@ contexts:
     - match: '\b([^ ]+)\b'
       scope: invalid.illegal.caos
       pop: true
-      
