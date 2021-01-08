@@ -10,8 +10,12 @@ scope: source.caos
 contexts:
   main:
 
+    - match: ','
+      scope: invalid.illegal.caos
+
     - match: '\s*\*.*$'
       scope: comment.line.caos
+
     - match: '([_][Cc][Dd][_])\s*([Ee][Jj][Cc][Tt])'
       captures:
         1: entity.name.function.caos.prefix
