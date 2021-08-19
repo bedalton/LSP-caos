@@ -10,12 +10,8 @@ scope: source.caos
 contexts:
   main:
 
-    - match: ','
-      scope: invalid.illegal.caos
-
     - match: '\s*\*.*$'
       scope: comment.line.caos
-
     - match: '(\b([Aa][Bb][Ss][Vv])\b)'
       comment: 'Set a variable to its absolute value, so if var is negative var = 0 - {var}, otherwise {var} is\nleft alone.'
       scope: entity.name.function.caos
@@ -133,14 +129,14 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'BRN: DMPB (command)\nDumps the sizes of the binary data dumps for current lobes and tracts.'
+      comment: 'Dumps the sizes of the binary data dumps for current lobes and tracts.'
       scope: entity.name.function.caos
 
     - match: '([Bb][Rr][Nn][:])\s*([Dd][Mm][Pp][Dd])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'BRN: DMPD (command) TRACT_NUMBER (integer) DENDRITE_NUMBER (integer)\nDumps a dendrite as binary\ndata.'
+      comment: 'Dumps a dendrite as binary data.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue]
 
@@ -148,7 +144,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'BRN: DMPL (command) LOBE_NUMBER (integer)\nDumps a lobe as binary data.'
+      comment: 'Dumps a lobe as binary data.'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -156,7 +152,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'BRN: DMPN (command) LOBE_NUMBER (integer) NEURON_NUMBER (integer)\nDumps a neuron as binary data.'
+      comment: 'Dumps a neuron as binary data.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue]
 
@@ -164,7 +160,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'BRN: DMPT (command) TRACT_NUMBER (integer)\nDumps a tract as binary data.'
+      comment: 'Dumps a tract as binary data.'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -172,7 +168,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'BRN: SETD (command) TRACT_NUMBER (integer) DENDRITE_NUMBER (integer) WEIGHT_NUMBER (integer)\nNEW_VALUE (float)\nSets a dendrite weight.'
+      comment: 'Sets a dendrite weight.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue]
 
@@ -180,7 +176,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'BRN: SETL (command) LOBE_NUMBER (integer) LINE_NUMBER (integer) NEW_VALUE (float)\nSets a lobe''s SV\nrule float value.'
+      comment: 'Sets a lobe''s SV rule float value.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue]
 
@@ -188,7 +184,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'BRN: SETN (command) LOBE_NUMBER (integer) NEURON_NUMBER (integer) STATE_NUMBER (integer) NEW_VALUE\n(float)\nSets a neuron weight.'
+      comment: 'Sets a neuron weight.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue]
 
@@ -196,7 +192,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'BRN: SETT (command) TRACT_NUMBER (integer) LINE_NUMBER (integer) NEW_VALUE (float)\nSets a tract''s\nSV rule float value.'
+      comment: 'Sets a tract''s SV rule float value.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue]
 
@@ -236,12 +232,12 @@ contexts:
       push: [rvalue,rvalue]
 
     - match: '(\b([Cc][Ll][Aa][Cc])\b)'
-      comment: 'Set the click action, which is the identifier of the message sent to the agent when it is clicked\non, provided attribute Activateable is set. Default is activate 1. Use -1 to prevent it sending a\nmessage. Also overriden by CLIK. Remember that the early Message Numbers differ slightly from Script\nNumbers.'
+      comment: 'Set the click action, which is the identifier of the message sent to the agent when it is clicked\non, provided attribute Activateable is set. Default is activate 1. Use -1 to prevent it sending a\nmessage. Also overridden by CLIK. Remember that the early Message Numbers differ slightly from\nScript Numbers.'
       scope: entity.name.function.caos
       push: [rvalue]
 
     - match: '(\b([Cc][Ll][Ii][Kk])\b)'
-      comment: 'Sets a chain of three message ids to cycle through as the agent is clicked on. Entries of -1 are\nignored. Overriden by CLAC.'
+      comment: 'Sets a chain of three message ids to cycle through as the agent is clicked on. Entries of -1 are\nignored. Overridden by CLAC.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue]
 
@@ -264,7 +260,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'DBG: ASRT (command) CONDITION (condition)\nConfirms that a condition is true. If it isn''t, it\ndisplays a runtime error dialog.'
+      comment: 'Confirms that a condition is true. If it isn''t, it displays a runtime error dialog.'
       scope: entity.name.function.caos
       push: [rvalue, eqOp, rvalue]
 
@@ -272,21 +268,21 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'DBG: CPRO (command)\nClears agent profiling information. Measurements output with DBG: PROF start\nhere.'
+      comment: 'Clears agent profiling information. Measurements output with DBG: PROF start here.'
       scope: entity.name.function.caos
 
     - match: '([Dd][Bb][Gg][:])\s*([Ff][Ll][Ss][Hh])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'DBG: FLSH (command)\nThis flushes the system''s input buffers - usually only useful if DBG: PAWSed.'
+      comment: 'This flushes the system''s input buffers - usually only useful if DBG: PAWSed.'
       scope: entity.name.function.caos
 
     - match: '([Dd][Bb][Gg][:])\s*([Hh][Tt][Mm][Ll])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'DBG: HTML (command) SORT_ORDER (integer)\nSends CAOS documentation to the output stream. Sort order\nis 0 for alphabetical, 1 for categorical.'
+      comment: 'Sends CAOS documentation to the output stream. Sort order is 0 for alphabetical, 1 for\ncategorical.'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -294,7 +290,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'DBG: OUTS (command) VALUE (string)\nSend a string to the debug log - use DBG: POLL to retrieve.'
+      comment: 'Send a string to the debug log - use DBG: POLL to retrieve.'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -302,7 +298,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'DBG: OUTV (command) VALUE (decimal)\nSend a number to the debug log - use DBG: POLL to retrieve.'
+      comment: 'Send a number to the debug log - use DBG: POLL to retrieve.'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -310,35 +306,35 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'DBG: PAWS (command)\nThis pauses everything in the game. No game driven ticks will occur until a\nDBG: PLAY command is issued, so this command is only useful for debugging. Use PAUS for pausing of\nspecific agents, which you can use to implement a pause button.'
+      comment: 'This pauses everything in the game. No game driven ticks will occur until a DBG: PLAY command is\nissued, so this command is only useful for debugging. Use PAUS for pausing of specific agents, which\nyou can use to implement a pause button.'
       scope: entity.name.function.caos
 
     - match: '([Dd][Bb][Gg][:])\s*([Pp][Ll][Aa][Yy])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'DBG: PLAY (command)\nThis command undoes a previously given DBG: PAWS and allows game time to flow\nas normal.'
+      comment: 'This command undoes a previously given DBG: PAWS and allows game time to flow as normal.'
       scope: entity.name.function.caos
 
     - match: '([Dd][Bb][Gg][:])\s*([Pp][Oo][Ll][Ll])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'DBG: POLL (command)\nThis takes all of the DBG: OUTV and DBG: OUTS output to date and writes it to\nthe output stream.'
+      comment: 'This takes all of the DBG: OUTV and DBG: OUTS output to date and writes it to the output stream.'
       scope: entity.name.function.caos
 
     - match: '([Dd][Bb][Gg][:])\s*([Pp][Rr][Oo][Ff])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'DBG: PROF (command)\nSends agent profile information to the output stream. This gives you data about\nthe time the engine spends running the update and message handling code for each classifier. The\ndata is measured from engine startup, or the point marked with DBG: CPRO. It''s output in comma\nseparated value (CSV) format, so you can load it into a spreadsheet (e.g. Gnumeric or Excel) for\nsorting and summing.'
+      comment: 'Sends agent profile information to the output stream. This gives you data about the time the engine\nspends running the update and message handling code for each classifier. The data is measured from\nengine startup, or the point marked with DBG: CPRO. It''s output in comma separated value (CSV)\nformat, so you can load it into a spreadsheet (e.g. Gnumeric or Excel) for sorting and summing.'
       scope: entity.name.function.caos
 
     - match: '([Dd][Bb][Gg][:])\s*([Tt][Aa][Cc][Kk])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'DBG: TACK (command) FOLLOW (agent)\nPauses the game when the given agent next executes a single line\nof CAOS code. This pause is mid-tick, and awaits incoming requests, or the pause key. Either another\nDBG: TACK or a DBG: PLAY command will make the engine carry on. Any other incoming requests will be\nprocessed as normal. However, the virtual machine of the tacking agent is effectively in\nmid-processing, so some CAOS commands may cause unpredictable results, and even crash the engine. In\nparticular, you shouldn''t KILL the tacking agent. You can see which agent is being tracked with\nTACK.'
+      comment: 'Pauses the game when the given agent next executes a single line of CAOS code. This pause is\nmid-tick, and awaits incoming requests, or the pause key. Either another DBG: TACK or a DBG: PLAY\ncommand will make the engine carry on. Any other incoming requests will be processed as normal.\nHowever, the virtual machine of the tacking agent is effectively in mid-processing, so some CAOS\ncommands may cause unpredictable results, and even crash the engine. In particular, you shouldn''t\nKILL the tacking agent. You can see which agent is being tracked with TACK.'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -346,14 +342,14 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'DBG: TOCK (command)\nThis command forces a tick to occur. It is useful in external apps to drive the\ngame according to a different clock instead of the game clock.'
+      comment: 'This command forces a tick to occur. It is useful in external apps to drive the game according to a\ndifferent clock instead of the game clock.'
       scope: entity.name.function.caos
 
     - match: '([Dd][Bb][Gg][:])\s*([Ww][Tt][Ii][Kk])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'DBG: WTIK (command) NEW_WORLD_TICK (integer)\nChanges the world tick WTIK to the given value. This\nshould only be used for debugging, as it will potentially leave confusing information in the\ncreature history, and change the time when delayed messages are processed. Its main use is to jump\nto different seasons and times of day.'
+      comment: 'Changes the world tick WTIK to the given value. This should only be used for debugging, as it will\npotentially leave confusing information in the creature history, and change the time when delayed\nmessages are processed. Its main use is to jump to different seasons and times of day.'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -435,7 +431,7 @@ contexts:
       scope: entity.name.function.caos
 
     - match: '(\b([Dd][Yy][Ee][Dd])\b)'
-      comment: 'Sets a layer of clothing on part of the creature. The overlay_file is the index of the overlay\ngallery. Currently there is also one tintable gallery available which is index 1. The set_number is\nthe type of clothing to put on from the overlay file - think of it as an outfit number. layer 0 is\nthe actual body of the creature, so unless you want to replace the body part itself use a higher\nlayer. Higher layers are on top of lower ones. e.g. 0 for a face, 1 for measels spots, 2 for a\nfencing mask. See also BODY and NUDE.'
+      comment: 'Sets a layer of clothing on part of the creature. The overlay_file is the index of the overlay\ngallery. Currently there is also one tintable gallery available which is index 1. The set_number is\nthe type of clothing to put on from the overlay file - think of it as an outfit number. layer 0 is\nthe actual body of the creature, so unless you want to replace the body part itself use a higher\nlayer. Higher layers are on top of lower ones. e.g. 0 for a face, 1 for measles spots, 2 for a\nfencing mask. See also BODY and NUDE.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue]
 
@@ -482,7 +478,7 @@ contexts:
       push: [rvalue,rvalue,rvalue]
 
     - match: '(\b([Ee][Ss][Ee][Ee])\b)'
-      comment: '...[NEXT]\nEnumerate across all specified objects that can be seen by the [OWNR] object.\nNote: All\ncommands between [ESEE] and [NEXT] run as [INST]. [TARG] is returned to [OWNR] (in event scripts)\nafter enumeration.'
+      comment: 'ESEE...[NEXT]\nEnumerate across all specified objects that can be seen by the [OWNR] object.\nNote:\nAll commands between [ESEE] and [NEXT] run as [INST]. [TARG] is returned to [OWNR] (in event\nscripts) after enumeration.'
       scope: keyword.control.caos
       push: [rvalue,rvalue,rvalue]
 
@@ -510,7 +506,7 @@ contexts:
       scope: entity.name.function.caos
 
     - match: '(\b([Ff][Cc][Uu][Ss])\b)'
-      comment: 'Set keyboard focus to the current PART of the targetted agent. The part should be a PAT: TEXT. If\nyou TARG NULL first, then no part will have the focus.'
+      comment: 'Set keyboard focus to the current PART of the targeted agent. The part should be a PAT: TEXT. If\nyou TARG NULL first, then no part will have the focus.'
       scope: entity.name.function.caos
 
     - match: '([Ff][Ii][Ll][Ee])\s*([Ee][Xx][Ee][Cc])'
@@ -525,7 +521,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'FILE GLOB (command) DIRECTORY (integer) FILESPEC (string)\nThis globs a journal directory (0 for\nworld one, 1 for main one) for the filespec provided. As all this can do is list files, it does not\nworry about where you look relative to the journal directory in question. Use this with care.\nHaving\nglobbed a directory, the listing is available on the input stream as a number, followed by the names\nof each file. To read - ise INOK, INNI and INNL. Once you have finished, remember to do a FILE ICLO\nto remove the glob output from the VM.'
+      comment: 'This globs a journal directory (0 for world one, 1 for main one) for the filespec provided. As all\nthis can do is list files, it does not worry about where you look relative to the journal directory\nin question. Use this with care.\nHaving globbed a directory, the listing is available on the input\nstream as a number, followed by the names of each file. To read - ise INOK, INNI and INNL. Once you\nhave finished, remember to do a FILE ICLO to remove the glob output from the VM.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue]
 
@@ -533,14 +529,14 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'FILE ICLO (command)\nDisconnects anything which is attached to the input stream. If this is a file,\nthen the file is closed.'
+      comment: 'Disconnects anything which is attached to the input stream. If this is a file, then the file is\nclosed.'
       scope: entity.name.function.caos
 
     - match: '([Ff][Ii][Ll][Ee])\s*([Ii][Oo][Pp][Ee])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'FILE IOPE (command) DIRECTORY (integer) FILENAME (string)\nSets the file for the input stream of the\ncurrent virtual machine - there is a virtual machine for each agent, so this is much the same as\nsetting it for OWNR. Use INNL, INNI and INNF to get data from the stream, and INOK to check validity\nof the stream. The filename should include any file extension.\nYou should use FILE ICLO to close the\nfile, although this happens automatically if you set a new file, if the virtual machine is\ndestroyed, or if the engine exits.\nDirectory is 0 for the current world''s journal directory, 1 for\nthe main journal directory, or 2 for the GAME engine_other_world world''s journal directory.'
+      comment: 'Sets the file for the input stream of the current virtual machine - there is a virtual machine for\neach agent, so this is much the same as setting it for OWNR. Use INNL, INNI and INNF to get data\nfrom the stream, and INOK to check validity of the stream. The filename should include any file\nextension.\nYou should use FILE ICLO to close the file, although this happens automatically if you\nset a new file, if the virtual machine is destroyed, or if the engine exits.\nDirectory is 0 for the\ncurrent world''s journal directory, 1 for the main journal directory, or 2 for the GAME\nengine_other_world world''s journal directory.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue]
 
@@ -548,7 +544,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'FILE JDEL (command) DIRECTORY (integer) FILENAME (string)\nThis deletes the file (filename)\nspecified from the journal directory specified. If directory is zero, this is the current world''s\njournal directory, otherwise it is the main journal directory. It deletes the file immediately,\nrather than marking it for the attic.'
+      comment: 'This deletes the file (filename) specified from the journal directory specified. If directory is\nzero, this is the current world''s journal directory, otherwise it is the main journal directory. It\ndeletes the file immediately, rather than marking it for the attic.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue]
 
@@ -556,21 +552,21 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'FILE OCLO (command)\nDisconnects anything which is attached to the output stream. If this is a file,\nthen the file is closed.'
+      comment: 'Disconnects anything which is attached to the output stream. If this is a file, then the file is\nclosed.'
       scope: entity.name.function.caos
 
     - match: '([Ff][Ii][Ll][Ee])\s*([Oo][Ff][Ll][Uu])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'FILE OFLU (command)\nFlush output stream. If it is attached to a disk file, this will force any data\nin the buffer to be written to disk.'
+      comment: 'Flush output stream. If it is attached to a disk file, this will force any data in the buffer to be\nwritten to disk.'
       scope: entity.name.function.caos
 
     - match: '([Ff][Ii][Ll][Ee])\s*([Oo][Oo][Pp][Ee])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'FILE OOPE (command) DIRECTORY (integer) FILENAME (string) APPEND (integer)\nSets the file for the\noutput stream of the current virtual machine - there is a virtual machine for each agent, so this is\nmuch the same as setting it for OWNR. Use OUTV and OUTS or various other commands to send text data\nto the stream. The filename should include any file extension.\nYou should use FILE OCLO to close the\nfile, although this happens automatically if you set a new file, if the virtual machine is\ndestroyed, or if the engine exits.\nDirectory is 0 for the current world''s journal directory, 1 for\nthe main journal directory, or 2 for the GAME engine_other_world world''s journal directory. Set\nappend to 1 to add to the end of the file, or 0 to replace any existing file.'
+      comment: 'Sets the file for the output stream of the current virtual machine - there is a virtual machine for\neach agent, so this is much the same as setting it for OWNR. Use OUTV and OUTS or various other\ncommands to send text data to the stream. The filename should include any file extension.\nYou should\nuse FILE OCLO to close the file, although this happens automatically if you set a new file, if the\nvirtual machine is destroyed, or if the engine exits.\nDirectory is 0 for the current world''s\njournal directory, 1 for the main journal directory, or 2 for the GAME engine_other_world world''s\njournal directory. Set append to 1 to add to the end of the file, or 0 to replace any existing\nfile.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue]
 
@@ -622,7 +618,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'GENE CLON (command) DEST_AGENT (agent) DEST_SLOT (integer) SOURCE_AGENT (agent) SOURCE_SLOT\n(integer)\nClones a genome, creating a new moniker and copying the genetics file.'
+      comment: 'Clones a genome, creating a new moniker and copying the genetics file.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue]
 
@@ -630,7 +626,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'GENE CROS (command) CHILD_AGENT (agent) CHILD_SLOT (integer) MUM_AGENT (agent) MUM_SLOT (integer)\nDAD_AGENT (agent) DAD_SLOT (integer) MUM_CHANCE_OF_MUTATION (integer) MUM_DEGREE_OF_MUTATION\n(integer) DAD_CHANCE_OF_MUTATION (integer) DAD_DEGREE_OF_MUTATION. (integer)\nCrosses two genomes\nwith mutation, and fills in a child geneme slot. Mutation variables may be in the range of 0 to\n255.'
+      comment: 'Crosses two genomes with mutation, and fills in a child genome slot. Mutation variables may be in\nthe range of 0 to 255.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue]
 
@@ -638,7 +634,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'GENE KILL (command) AGENT (agent) SLOT (integer)\nClears a genome slot.'
+      comment: 'Clears a genome slot.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue]
 
@@ -646,7 +642,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'GENE LOAD (command) AGENT (agent) SLOT (integer) GENE_FILE (string)\nLoads an engineered gene file\ninto a slot. Slot 0 is a special slot used only for creatures, and contains the moniker they\nexpress. Only the NEW: CREA command fills it in. Other slot numbers are used in pregnant creatures,\nin eggs, or to temporarily store a genome before expressing it with NEW: CREA. You can use them as\ngeneral purpose genome stores.\nThe gene file can have any name, and is loaded from the main genetics\nfile. A new moniker is generated, and a copy of the gene file put in the world directory. You can\nuse * and ? wildcards in the name, and a random matching file will be used.\nYou can also load\nmonikered files from the world genetics directory with this command. If so, the file is copied and a\nnew moniker generated. Wildcards are matched first in the main genetics directory, and only if none\nmatch is the world genetics directory searched.'
+      comment: 'Loads an engineered gene file into a slot. Slot 0 is a special slot used only for creatures, and\ncontains the moniker they express. Only the NEW: CREA command fills it in. Other slot numbers are\nused in pregnant creatures, in eggs, or to temporarily store a genome before expressing it with NEW:\nCREA. You can use them as general purpose genome stores.\nThe gene file can have any name, and is\nloaded from the main genetics file. A new moniker is generated, and a copy of the gene file put in\nthe world directory. You can use * and ? wildcards in the name, and a random matching file will be\nused.\nYou can also load monikered files from the world genetics directory with this command. If so,\nthe file is copied and a new moniker generated. Wildcards are matched first in the main genetics\ndirectory, and only if none match is the world genetics directory searched.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue]
 
@@ -654,7 +650,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'GENE MOVE (command) DEST_AGENT (agent) DEST_SLOT (integer) SOURCE_AGENT (agent) SOURCE_SLOT\n(integer)\nMoves a genome from one slot to another.'
+      comment: 'Moves a genome from one slot to another.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue]
 
@@ -662,7 +658,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'GIDS FMLY (command) FAMILY (integer)\nOutput the genus numbers for which there are scripts in the\nscriptorium for the given family. List is space delimited.'
+      comment: 'Output the genus numbers for which there are scripts in the scriptorium for the given family. List\nis space delimited.'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -670,7 +666,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'GIDS GNUS (command) FAMILY (integer) GENUS (integer)\nOutput the species numbers for which there are\nscripts in the scriptorium for the given family and genus. List is space delimited.'
+      comment: 'Output the species numbers for which there are scripts in the scriptorium for the given family and\ngenus. List is space delimited.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue]
 
@@ -678,14 +674,14 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'GIDS ROOT (command)\nOutput the family numbers for which there are scripts in the scriptorium. List\nis space delimited.'
+      comment: 'Output the family numbers for which there are scripts in the scriptorium. List is space delimited.'
       scope: entity.name.function.caos
 
     - match: '([Gg][Ii][Dd][Ss])\s*([Ss][Pp][Cc][Ss])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'GIDS SPCS (command) FAMILY (integer) GENUS (integer) SPECIES (integer)\nOutput the event numbers of\nscripts in the scriptorium for the given classifier. List is space delimited.'
+      comment: 'Output the event numbers of scripts in the scriptorium for the given classifier. List is space\ndelimited.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue]
 
@@ -732,7 +728,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST EVNT (command) MONIKER (string) EVENT_TYPE (integer) RELATED_MONIKER_1 (string)\nRELATED_MONIKER_2 (string)\nTriggers a life event of the given type. Some events are triggered\nautomatically by the engine, some events need triggering from CAOS, others are custom events that\nyou can use for your own purposes. See HIST TYPE for details of the event numbers. All new events\nmade call the Life Event script.'
+      comment: 'Triggers a life event of the given type. Some events are triggered automatically by the engine,\nsome events need triggering from CAOS, others are custom events that you can use for your own\npurposes. See HIST TYPE for details of the event numbers. All new events made call the Life Event\nscript.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue]
 
@@ -740,7 +736,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST FOTO (command) MONIKER (string) EVENT_NO (integer) NEW_VALUE (string)\nFor the given life\nevent, sets the associated photograph. Use SNAP to take the photograph first.\nIf there was already a\nphotograph for the event, then it is automatically marked for the attic as in LOFT, and overwritten\nwith the new photo. Hence you can use an empty string to clear a photo. If HIST WIPE is used to\nclear the event, the photo is similarly stored in the attic.\nIt is considered an error to send a\nphotograph that is in use (unless cloned with TINT) to the attic. If this happens, you will get a\nruntime error. You should either be confident that no agents are using the photo, or call LOFT first\nto test if they are.'
+      comment: 'For the given life event, sets the associated photograph. Use SNAP to take the photograph first.\nIf\nthere was already a photograph for the event, then it is automatically marked for the attic as in\nLOFT, and overwritten with the new photo. Hence you can use an empty string to clear a photo. If\nHIST WIPE is used to clear the event, the photo is similarly stored in the attic.\nIt is considered\nan error to send a photograph that is in use (unless cloned with TINT) to the attic. If this\nhappens, you will get a runtime error. You should either be confident that no agents are using the\nphoto, or call LOFT first to test if they are.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue]
 
@@ -748,7 +744,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST NAME (command) MONIKER (string) NEW_NAME (string)\nRenames the creature with the given\nmoniker.'
+      comment: 'Renames the creature with the given moniker.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue]
 
@@ -756,7 +752,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST UTXT (command) MONIKER (string) EVENT_NO (integer) NEW_VALUE (string)\nFor the given life\nevent, sets the user text.'
+      comment: 'For the given life event, sets the user text.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue]
 
@@ -764,7 +760,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST WIPE (command) MONIKER (string)\nPurge the creature history for the given moniker. Only applies\nif the genome isn''t referenced by any slot, and the creature is fully dead or exported. Use OOWW to\ntest this first.'
+      comment: 'Purge the creature history for the given moniker. Only applies if the genome isn''t referenced by\nany slot, and the creature is fully dead or exported. Use OOWW to test this first.'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -830,7 +826,7 @@ contexts:
       scope: keyword.control.caos
 
     - match: '(\b([Ll][Tt][Cc][Yy])\b)'
-      comment: 'Set the latency for the creatures given involuntary action (only relevant to involuntary actions).\nPrevent this action from repeating for an amount of time defined by min max. Delay is a random\namount of ticks between min*4 and max*4.\naction  int\nmin  int\nmax  int'
+      comment: 'Set the latency for the creatures given involuntary action (only relevant to involuntary actions).\nPrevent this action from repeating for an amount of time defined by min max. Delay is a random\namount of ticks between min*4 and max*4.\naction int\nmin int\nmax int'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue]
 
@@ -893,7 +889,7 @@ contexts:
       push: [rvalue]
 
     - match: '(\b([Mm][Ii][Rr][Rr])\b)'
-      comment: 'Tell the agent to draw the whole scene mirrored (send 1 as a parameter) or normally (send 0 as a\nparameter), the second paramater mirrors just the agents.'
+      comment: 'Tell the agent to draw the whole scene mirrored (send 1 as a parameter) or normally (send 0 as a\nparameter), the second parameter mirrors just the agents.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue]
 
@@ -946,7 +942,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'NEW: COMP (command) FAMILY (integer) GENUS (integer) SPECIES (integer) SPRITE_FILE (string)\nIMAGE_COUNT (integer) FIRST_IMAGE (integer) PLANE (integer)\nCreate a new compound agent. The sprite\nfile is for the first part, which is made automatically. Similarly, image_count and first_image are\nfor that first part. The plane is the absolute plane of part 1 - the planes of other parts are\nrelative to the first part.'
+      comment: 'Create a new compound agent. The sprite file is for the first part, which is made automatically.\nSimilarly, image_count and first_image are for that first part. The plane is the absolute plane of\npart 1 - the planes of other parts are relative to the first part.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue]
 
@@ -954,7 +950,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'NEW: CREA (command) FAMILY (integer) GENE_AGENT (agent) GENE_SLOT (integer) SEX (integer) VARIANT\n(integer)\nMakes a creature using the genome from the given gene slot in another agent. You''ll want\nto use GENE CROS or GENE LOAD to fill that slot in first. The gene slot is cleared, as control of\nthat genome is moved to the special slot 0 of the new creature, where it is expressed. Sex is 1 for\nmale, 2 for female or 0 for random. The variant can also be 0 for a random value between 1 and 8.\nSee also NEWC.'
+      comment: 'Makes a creature using the genome from the given gene slot in another agent. You''ll want to use\nGENE CROS or GENE LOAD to fill that slot in first. The gene slot is cleared, as control of that\ngenome is moved to the special slot 0 of the new creature, where it is expressed. Sex is 1 for male,\n2 for female or 0 for random. The variant can also be 0 for a random value between 1 and 8. See also\nNEWC.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue,rvalue]
 
@@ -962,7 +958,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'NEW: SIMP (command) FAMILY (integer) GENUS (integer) SPECIES (integer) SPRITE_FILE (string)\nIMAGE_COUNT (integer) FIRST_IMAGE (integer) PLANE (integer)\nCreate a new simple agent, using the\nspecified sprite file. The agent will have image_count sprites available, starting at first_image in\nthe file. The plane is the screen depth to show the agent at - the higher the number, the nearer the\ncamera.'
+      comment: 'Create a new simple agent, using the specified sprite file. The agent will have image_count sprites\navailable, starting at first_image in the file. The plane is the screen depth to show the agent at -\nthe higher the number, the nearer the camera.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue]
 
@@ -970,7 +966,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'NEW: VHCL (command) FAMILY (integer) GENUS (integer) SPECIES (integer) SPRITE_FILE (string)\nIMAGE_COUNT (integer) FIRST_IMAGE (integer) PLANE (integer)\nCreate a new vehicle. Parameters are the\nsame as NEW: COMP.'
+      comment: 'Create a new vehicle. Parameters are the same as NEW: COMP.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue]
 
@@ -984,7 +980,7 @@ contexts:
       scope: keyword.control.caos
 
     - match: '(\b([Nn][Oo][Hh][Hh])\b)'
-      comment: 'Tell the creature to immediately stop holding hands with the pointer. Useful when you are about to\nteleport a norn, it prevents the pointer from continuosly changing his position back to where it\nwas.'
+      comment: 'Tell the creature to immediately stop holding hands with the pointer. Useful when you are about to\nteleport a norn, it prevents the pointer from continuously changing his position back to where it\nwas.'
       scope: entity.name.function.caos
 
     - match: '(\b([Nn][Oo][Rr][Nn])\b)'
@@ -1000,7 +996,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'ORDR SHOU (command) SPEECH (string)\nSends a spoken command from target to all creatures that can\nhear it.'
+      comment: 'Sends a spoken command from target to all creatures that can hear it.'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -1008,7 +1004,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'ORDR SIGN (command) SPEECH (string)\nSends a spoken command from target to all creatures that can\nsee it.'
+      comment: 'Sends a spoken command from target to all creatures that can see it.'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -1016,7 +1012,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'ORDR TACT (command) SPEECH (string)\nSends a spoken command from target to all creatures that are\ntouching it.'
+      comment: 'Sends a spoken command from target to all creatures that are touching it.'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -1024,7 +1020,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'ORDR WRIT (command) CREATURE (agent) SPEECH (string)\nSends a spoken command from target to the\nspecified creature.'
+      comment: 'Sends a spoken command from target to the specified creature.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue]
 
@@ -1044,7 +1040,7 @@ contexts:
       push: [rvalue]
 
     - match: '(\b([Oo][Uu][Tt][Xx])\b)'
-      comment: 'This sends the string text to the output stream. However it first transforms any escapes into\nquoted escapes, and it also quotes the entire string for you.\ne.g.:\noutx "Moooose\n"\nWould produce:\n"Moooose\n"\non the output stream instead of:\nMoooose'
+      comment: 'This sends the string text to the output stream. However it first transforms any escapes into\nquoted escapes, and it also quotes the entire string for you.\ne.g.:\noutx "Moooose\n"\nWould\nproduce:\n"Moooose\n"\non the output stream instead of:\nMoooose'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -1066,7 +1062,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PAT: BUTT (command) PART_ID (integer) SPRITE_FILE (string) FIRST_IMAGE (integer) IMAGE_COUNT\n(integer) REL_X (decimal) REL_Y (decimal) REL_PLANE (integer) ANIM_HOVER (byte-string) MESSAGE_ID\n(integer) OPTION (integer)\nCreate a button on a compound agent. anim_hover is an animation, as in\nthe ANIM command, to use when the mouse is over the button - when the mouse is moved off, it returns\nto any previous animation that was going. message_id is sent when the button is clicked. option is 0\nfor the mouse to hit anywhere in the bounding box, 1 to hit only non-transparent pixels.\n_P1_ of the\nmessage is set to the part number of the buttons allowing you to overload your messages by button\ngroup and then switch on input value in the script.'
+      comment: 'Create a button on a compound agent. anim_hover is an animation, as in the ANIM command, to use\nwhen the mouse is over the button - when the mouse is moved off, it returns to any previous\nanimation that was going. message_id is sent when the button is clicked. option is 0 for the mouse\nto hit anywhere in the bounding box, 1 to hit only non-transparent pixels.\n_P1_ of the message is\nset to the part number of the buttons allowing you to overload your messages by button group and\nthen switch on input value in the script.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue]
 
@@ -1074,7 +1070,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'Creates a part that will recieve keyboard input and translate key codes.'
+      comment: 'Creates a part that will receive keyboard input and translate key codes.'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -1082,7 +1078,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PAT: CMRA (command) PART_ID (integer) OVERLAY_SPRITE (string) BASEIMAGE (integer) RELX (decimal)\nRELY (decimal) RELPLANE (integer) VIEWWIDTH (integer) VIEWHEIGHT (integer) CAMERAWIDTH (integer)\nCAMERAHEIGHT (integer)\nCreate a camera with possible overlay sprite whose name may be blank. Use\nSCAM to change the camera''s view.'
+      comment: 'Create a camera with possible overlay sprite whose name may be blank. Use SCAM to change the\ncamera''s view.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue]
 
@@ -1090,7 +1086,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PAT: DULL (command) PART_ID (integer) SPRITE_FILE (string) FIRST_IMAGE (integer) REL_X (decimal)\nREL_Y (decimal) REL_PLANE (integer)\nCreate a dull part for a compound agent. A dull part does\nnothing except show an image from the given sprite file. You should number part ids starting at 1,\nas part 0 is automatically made when the agent is made. The dull part''s position is relative to\npart 0, as is its plane. Use PART to select it before you change POSE or ANIM, or use various other\ncommands.'
+      comment: 'Create a dull part for a compound agent. A dull part does nothing except show an image from the\ngiven sprite file. You should number part ids starting at 1, as part 0 is automatically made when\nthe agent is made. The dull part''s position is relative to part 0, as is its plane. Use PART to\nselect it before you change POSE or ANIM, or use various other commands.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue,rvalue,rvalue]
 
@@ -1098,7 +1094,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PAT: FIXD (command) PART_ID (integer) SPRITE_FILE (string) FIRST_IMAGE (integer) REL_X (decimal)\nREL_Y (decimal) REL_PLANE (integer) FONT_SPRITE (string)\nCreate a fixed text part. The text is\nwrapped on top of the supplied gallery image. new-line characters may be used. Use PTXT to set the\ntext.'
+      comment: 'Create a fixed text part. The text is wrapped on top of the supplied gallery image. new-line\ncharacters may be used. Use PTXT to set the text.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue]
 
@@ -1106,7 +1102,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PAT: GRPH (command) PART_ID (integer) OVERLAY_SPRITE (string) BASEIMAGE (integer) RELX (decimal)\nRELY (decimal) RELPLANE (integer) NUMVALUES (integer)\nCreates a graph part on a compound agent. Use\nGRPL to add a line to the graph and GRPV to add a value to a graph line.'
+      comment: 'Creates a graph part on a compound agent. Use GRPL to add a line to the graph and GRPV to add a\nvalue to a graph line.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue]
 
@@ -1114,7 +1110,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PAT: KILL (command) PART_ID (integer)\nDestroys the specified part of a compound agent. You can''t\ndestroy part 0.'
+      comment: 'Destroys the specified part of a compound agent. You can''t destroy part 0.'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -1122,7 +1118,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PAT: TEXT (command) PART_ID (integer) SPRITE_FILE (string) FIRST_IMAGE (integer) REL_X (decimal)\nREL_Y (decimal) REL_PLANE (integer) MESSAGE_ID (integer) FONT_SPRITE (string)\nCreates a text entry\npart. Gains the focus when you click on it, or with the FCUS command. Sends the message_id when\nreturn is pressed - a good place to use PTXT to get the text out, and to set the focus elsewhere.\nSet message_id to 0 to not call any script, or to -1 to not send any message and instead insert a\ncarriage return.'
+      comment: 'Creates a text entry part. Gains the focus when you click on it, or with the FCUS command. Sends\nthe message_id when return is pressed - a good place to use PTXT to get the text out, and to set the\nfocus elsewhere. Set message_id to 0 to not call any script, or to -1 to not send any message and\ninstead insert a carriage return.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue]
 
@@ -1150,7 +1146,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRAY GARB (command) FORCE (integer)\nThis command clears the manager''s cached resource data.\nExecute this after a lot of resource accesses (E.g. installing an agent) to clean up the memory used\nduring the process. If you don''t do this, excess memory can be held for a while, If the parameter\nis zero (the most usual) then the manager will only forget resources which are not in use at the\nmoment. If force is non-zero, then the manager will forget all the previously loaded resources. As\nthe resources currently in use go out of scope, they are automatically garbage collected.'
+      comment: 'This command clears the manager''s cached resource data. Execute this after a lot of resource\naccesses (E.g. installing an agent) to clean up the memory used during the process. If you don''t do\nthis, excess memory can be held for a while, If the parameter is zero (the most usual) then the\nmanager will only forget resources which are not in use at the moment. If force is non-zero, then\nthe manager will forget all the previously loaded resources. As the resources currently in use go\nout of scope, they are automatically garbage collected.'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -1158,7 +1154,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRAY REFR (command)\nThis command refreshes the engine''s view of the Resource directory. Execute\nthis if you have reason to believe that the files in the directory may have changed. It only detects\nchanges if there is a new file or a deleted file - if a file has only changed it won''t notice. This\nis awkward during development, you can use PRAY KILL to kill the old file before copying the new one\nover. PRAY REFR forces a PRAY GARB to happen automatically.'
+      comment: 'This command refreshes the engine''s view of the Resource directory. Execute this if you have\nreason to believe that the files in the directory may have changed. It only detects changes if there\nis a new file or a deleted file - if a file has only changed it won''t notice. This is awkward\nduring development, you can use PRAY KILL to kill the old file before copying the new one over. PRAY\nREFR forces a PRAY GARB to happen automatically.'
       scope: entity.name.function.caos
 
     - match: '(\b([Pp][Rr][Nn][Tt])\b)'
@@ -1175,7 +1171,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRT: BANG (command) BANG_STRENGTH (integer)\nBreaks connections randomly with other machines (as if\nthe machine had been ''banged''. Use a bang_strength of 100 to disconnect all ports, 50 to\ndisconnect about half etc.'
+      comment: 'Breaks connections randomly with other machines (as if the machine had been ''banged''. Use a\nbang_strength of 100 to disconnect all ports, 50 to disconnect about half etc.'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -1183,7 +1179,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRT: INEW (command) ID (integer) NAME (string) DESCRIPTION (string) X (integer) Y (integer)\nMESSAGE_NUM (integer)\nCreate a new input port on target. You should number input port ids starting\nat 0. The message_num is the message that will be sent to the agent when a signal comes in through\nthe input port. _P1_ of that message will contain the data value of the signal. The position of the\nport, relative to the agent, is given by x, y.'
+      comment: 'Create a new input port on target. You should number input port ids starting at 0. The message_num\nis the message that will be sent to the agent when a signal comes in through the input port. _P1_ of\nthat message will contain the data value of the signal. The position of the port, relative to the\nagent, is given by x, y.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue,rvalue,rvalue]
 
@@ -1191,7 +1187,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRT: IZAP (command) ID (integer)\nRemove the specified input port.'
+      comment: 'Remove the specified input port.'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -1199,7 +1195,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRT: JOIN (command) SOURCE_AGENT (agent) OUTPUT_ID (integer) DEST_AGENT (agent) INPUT_ID\n(integer)\nConnect an output port on the source agent to an input port on the destination. An input\nmay only be connected to one output at at time, but an output may feed any number of inputs.'
+      comment: 'Connect an output port on the source agent to an input port on the destination. An input may only\nbe connected to one output at at time, but an output may feed any number of inputs.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue]
 
@@ -1207,7 +1203,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRT: KRAK (command) AGENT (agent) IN_OR_OUT (integer) PORT_INDEX (integer)\nBreaks a specific\nconnection on a machine. If in_or_out is zero, it is an input port whose connection is broken, if it\nis an output port, then all inputs are disconnected.'
+      comment: 'Breaks a specific connection on a machine. If in_or_out is zero, it is an input port whose\nconnection is broken, if it is an output port, then all inputs are disconnected.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue]
 
@@ -1215,7 +1211,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRT: ONEW (command) ID (integer) NAME (string) DESCRIPTION (string) X (integer) Y (integer)\nCreate\na new output port on target. You should number input port ids starting at 0. The port''s relative\nposition is given by x, y.'
+      comment: 'Create a new output port on target. You should number input port ids starting at 0. The port''s\nrelative position is given by x, y.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue,rvalue]
 
@@ -1223,7 +1219,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRT: OZAP (command) ID (integer)\nRemove the specified output port.'
+      comment: 'Remove the specified output port.'
       scope: entity.name.function.caos
       push: [rvalue]
 
@@ -1231,7 +1227,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRT: SEND (command) ID (integer) DATA (anything)\nSend a signal from the specified output port to\nall connected inputs. The data can be any integer.'
+      comment: 'Send a signal from the specified output port to all connected inputs. The data can be any integer.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue]
 
@@ -1270,7 +1266,7 @@ contexts:
       push: [rvalue,rvalue,rvalue,rvalue,rvalue]
 
     - match: '(\b([Rr][Cc][Ll][Rr])\b)'
-      comment: 'RCLR (command) X (integer) Y (integer)\nClear the music for the room at the given location.'
+      comment: 'Clear the music for the room at the given location.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue]
 
@@ -1442,7 +1438,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'Send a stimulus to all creatures who can see OWNR.'
+      comment: 'Send a stimulus to all creatures who can see [OWNR].'
       scope: entity.name.function.caos
       push: [rvalue,rvalue]
 
@@ -1450,7 +1446,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'Send a stimulus to all creatures who are touching OWNR.'
+      comment: 'Send a stimulus to all creatures who are touching [OWNR].'
       scope: entity.name.function.caos
       push: [rvalue,rvalue]
 
@@ -1502,7 +1498,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'SWAY SHOU (command) DRIVE (integer) ADJUST (float) DRIVE (integer) ADJUST (float) DRIVE (integer)\nADJUST (float) DRIVE (integer) ADJUST (float)\nStimulate all creatures that can hear OWNR to adjust\nfour drives by the given amounts.'
+      comment: 'Stimulate all creatures that can hear OWNR to adjust four drives by the given amounts.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue]
 
@@ -1510,7 +1506,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'SWAY SIGN (command) DRIVE (integer) ADJUST (float) DRIVE (integer) ADJUST (float) DRIVE (integer)\nADJUST (float) DRIVE (integer) ADJUST (float)\nStimulate all creatures that can see OWNR to adjust\nfour drives by the given amounts.'
+      comment: 'Stimulate all creatures that can see OWNR to adjust four drives by the given amounts.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue]
 
@@ -1518,7 +1514,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'SWAY TACT (command) DRIVE (integer) ADJUST (float) DRIVE (integer) ADJUST (float) DRIVE (integer)\nADJUST (float) DRIVE (integer) ADJUST (float)\nStimulate all creatures that are touching OWNR to\nadjust four drives by the given amounts.'
+      comment: 'Stimulate all creatures that are touching OWNR to adjust four drives by the given amounts.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue]
 
@@ -1526,7 +1522,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'SWAY WRIT (command) CREATURE (agent) DRIVE (integer) ADJUST (float) DRIVE (integer) ADJUST (float)\nDRIVE (integer) ADJUST (float) DRIVE (integer) ADJUST (float)\nStimulate a specific creature to\nadjust four drives by the given amounts.'
+      comment: 'Stimulate a specific creature to adjust four drives by the given amounts.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue]
 
@@ -1597,7 +1593,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'URGE SHOU (command) NOUN_STIM (float) VERB_ID (integer) VERB_STIM (float)\nUrge all creatures who\ncan hear OWNR to perform the verb_id action on OWNR. Stimuli can range from -1 to 1, ranging from\ndiscourage to encourage.'
+      comment: 'Urge all creatures who can hear OWNR to perform the verb_id action on OWNR. Stimuli can range from\n-1 to 1, ranging from discourage to encourage.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue]
 
@@ -1605,7 +1601,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'URGE SIGN (command) NOUN_STIM (float) VERB_ID (integer) VERB_STIM (float)\nUrge all creatures who\ncan see OWNR to perform an action on OWNR.'
+      comment: 'Urge all creatures who can see OWNR to perform an action on OWNR.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue]
 
@@ -1613,7 +1609,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'URGE TACT (command) NOUN_STIM (float) VERB_ID (integer) VERB_STIM (float)\nUrge all creatures who\nare touching OWNR to perform an action on OWNR.'
+      comment: 'Urge all creatures who are touching OWNR to perform an action on OWNR.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue]
 
@@ -1621,7 +1617,7 @@ contexts:
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'URGE WRIT (command) CREATURE (agent) NOUN_ID (integer) NOUN_STIM (float) VERB_ID (integer)\nVERB_STIM (float)\nUrge a specific creature to perform a specific action on a specific noun. A\nstimulus greater than 1 will force the Creature to perform an action, or to set its attention (mind\ncontrol!). Use an id -1 and stim greater than 1 to unforce it.'
+      comment: 'Urge a specific creature to perform a specific action on a specific noun. A stimulus greater than 1\nwill force the Creature to perform an action, or to set its attention (mind control!). Use an id -1\nand stim greater than 1 to un-force it.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue,rvalue,rvalue]
 
@@ -1663,7 +1659,7 @@ contexts:
       scope: entity.name.function.caos
 
     - match: '(\b([Ww][Ee][Aa][Rr])\b)'
-      comment: 'Sets a layer of clothing on part of the creature. The set_number is the type of clothing to put on\nfrom the overlay file - think of it as an outfit number. layer 0 is the actual body of the creature,\nso unless you want to replace the body part itself use a higher layer. Higher layers are on top of\nlower ones. e.g. 0 for a face, 1 for measels spots, 2 for a fencing mask. See also BODY and NUDE.'
+      comment: 'Sets a layer of clothing on part of the creature. The set_number is the type of clothing to put on\nfrom the overlay file - think of it as an outfit number. layer 0 is the actual body of the creature,\nso unless you want to replace the body part itself use a higher layer. Higher layers are on top of\nlower ones. e.g. 0 for a face, 1 for measles spots, 2 for a fencing mask. See also BODY and NUDE.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue]
 
@@ -1688,7 +1684,7 @@ contexts:
       push: [rvalue]
 
     - match: '(\b([Zz][Oo][Oo][Mm])\b)'
-      comment: 'Zoom in on the specified position by a negative amount of pixels or out by positive amount of\npixels. If you send -1 as the x and y coordinates then the camera zooms in on the exising view port\ncentre. This only applies to remote cameras.'
+      comment: 'Zoom in on the specified position by a negative amount of pixels or out by positive amount of\npixels. If you send -1 as the x and y coordinates then the camera zooms in on the existing view port\ncentre. This only applies to remote cameras.'
       scope: entity.name.function.caos
       push: [rvalue,rvalue,rvalue]
 
@@ -1709,53 +1705,63 @@ contexts:
       scope: comment.line.caos
     - match: '([_][Pp][1][_])'
       comment: 'First macro script parameters specified in command [MESG WRT+].'
-      scope: variable.parameter.caos._p1_
+      scope: variable.language.caos.lvalue
       pop: true
 
     - match: '([_][Pp][2][_])'
       comment: 'Second macro script parameters specified in command [MESG WRT+]'
-      scope: variable.parameter.caos._p2_
+      scope: variable.language.caos.lvalue
       pop: true
+
+    - match: '(\b([Aa][Tt][Tt][Rr])\b)'
+      comment: 'Sets/returns an objects Attributes'
+      pop: true
+      scope: variable.language.member.caos.lvalue.integer
 
     - match: '(\b([Aa][Vv][Aa][Rr])\b)'
       comment: 'This is the OVxx variable of the agent passed in. It is equivalent to target agent, OVxx, but means\nthat you don''t need to target it first :) You can also use them to implement primitive arrays.'
-      scope: variable.parameter.caos.avar
+      scope: variable.language.caos.lvalue
       set: [rvalue,rvalue]
 
     - match: '(\b([Ff][Rr][Oo][Mm])\b)'
       comment: 'If we''re processing a message, this is the OWNR who sent the message. NULL if the message was sent\nfrom an injected script or an install script. If the message was sent over the network using NET:\nWRIT, then this contains the user id of the sender, as a string.'
-      scope: variable.parameter.caos.from
       pop: true
+      scope: variable.language.member.caos.lvalue.agent
 
     - match: '(\b([Gg][Aa][Mm][Ee])\b)'
-      comment: 'A game variable is a global variable which can be referenced by name.\neg: SETV GAME "pi" 3.142\nGame\nvariables are stored as part of the world and so will be saved out in the world file. If a script\nuses a non-existant game variable, that variable will be created automatically (with undefined\ncontents). Agents, integers, floats and strings can be stored in game variables. Variable names are\ncase sensitive.\nThere are some conventions for the variable names:\nengine_ for Creatures Engine\ncav_\nfor Creatures Adventures\nc3_ for Creatures 3\nIt''s important to follow these, as 3rd party\ndevelopers will just use whatever names they fancy. DELG deletes a game variable. See also the table\nof engine Game Variables.'
-      scope: variable.parameter.caos.game
+      comment: 'A game variable is a global variable which can be referenced by name.\neg: SETV GAME "pi" 3.142\nGame\nvariables are stored as part of the world and so will be saved out in the world file. If a script\nuses a non-existent game variable, that variable will be created automatically (with undefined\ncontents). Agents, integers, floats and strings can be stored in game variables. Variable names are\ncase sensitive.\nThere are some conventions for the variable names:\nengine_ for Creatures Engine\ncav_\nfor Creatures Adventures\nc3_ for Creatures 3\nIt''s important to follow these, as 3rd party\ndevelopers will just use whatever names they fancy. DELG deletes a game variable. See also the table\nof engine Game Variables.'
+      scope: variable.language.caos.lvalue
       set: [rvalue]
 
     - match: '(\b([Mm][Vv][0-9][0-9])\b)'
       comment: 'MV00 to MV99 are variables specific to an agent. They are read from [OWNR], the owner agent of the\ncurrent script. These are the exact same variables as [OVxx], except read from [OWNR] not [TARG]. If\n[OWNR] and [TARG] are the same, then OV23 is MV23, for example.\n@range(0 to 99)'
-      scope: variable.parameter.caos.mvxx
+      scope: variable.other.member.caos
       pop: true
+
+    - match: '(\b([Nn][Oo][Rr][Nn])\b)'
+      comment: 'Returns the creature currently selected by the user.'
+      pop: true
+      scope: variable.language.member.caos.lvalue.agent
 
     - match: '(\b([Oo][Vv][0-9][0-9])\b)'
       comment: 'OV00 to OV99 are variables specific to an agent. They are read from [TARG], the target agent. You\ncan also access these same variables via [OWNR] using [MVxx].\n@range(0 to 99)'
-      scope: variable.parameter.caos.ovxx
+      scope: variable.other.member.caos
       pop: true
 
     - match: '(\b([Vv][Aa][0-9][0-9])\b)'
       comment: 'VA00 to VA99 are local variables, whose values are lost when the current script ends.\n@range(0 to\n99)'
-      scope: variable.parameter.caos.vaxx
+      scope: variable.other.member.caos
       pop: true
 
     - match: '(\b([Vv][Ee][Ll][Xx])\b)'
       comment: 'Horizontal velocity in pixels per tick - floating point.'
-      scope: variable.parameter.caos.velx
       pop: true
+      scope: variable.language.member.caos.lvalue.integer
 
     - match: '(\b([Vv][Ee][Ll][Yy])\b)'
       comment: 'Vertical velocity in pixels per tick - floating point.'
-      scope: variable.parameter.caos.vely
       pop: true
+      scope: variable.language.member.caos.lvalue.integer
     - match: '\s+'
       scope: text
 
@@ -1803,535 +1809,535 @@ contexts:
 
 
     - match: '([_][Ii][Tt][_])'
-      comment: 'Object that [OWNR] creature was attending to.\nNote: Only [OWNR]’s IT can be determined, not\n[TARG]’s.'
+      comment: 'Object that [OWNR] creature was attending to when the macro was started.\nNote: Only [OWNR]’s IT\ncan be determined, not [TARG]’s.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '([_][Pp][1][_])'
       comment: 'First macro script parameters specified in command [MESG WRT+].'
-      scope: variable.parameter.caos._p1_
+      scope: variable.language.caos.lvalue
       pop: true
 
     - match: '([_][Pp][2][_])'
       comment: 'Second macro script parameters specified in command [MESG WRT+]'
-      scope: variable.parameter.caos._p2_
+      scope: variable.language.caos.lvalue
       pop: true
 
     - match: '([_][Uu][Pp][_])'
       comment: 'Returns the value of the UP constant.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Aa][Cc][Cc][Gg])\b)'
       comment: 'Returns target''s acceleration due to gravity in pixels per tick squared.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Aa][Cc][Oo][Ss])\b)'
       comment: 'Returns arccosine of {x} in degrees.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Aa][Dd][Dd][Mm])\b)'
       comment: 'Creates a new metaroom with the given coordinates. Specifies the starting background file. Returns\nthe id of the new metaroom.'
       set: [rvalue,rvalue,rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Aa][Dd][Dd][Rr])\b)'
       comment: 'Creates a new room within a metaroom. Rooms have vertical left and right walls, but potentially\nsloped floors and ceilings. The coordinates specify the exact shape. Returns the id of the new\nroom.'
       set: [rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Aa][Ee][Rr][Oo])\b)'
       comment: 'Returns aerodynamic factor as a percentage.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Aa][Gg][Nn][Tt])\b)'
       comment: 'Given a unique identifier, returns the corresponding agent. Returns [NULL] if the agent no longer\nexists. [UNID] extracts the unique id. NOTE: This should only be used for external programs to\npersistently refer to an agent during a session. Variables can use SETA to store agent r-values\ndirectly for internal use. Unique identifiers can change across saved sessions.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Aa][Ss][Ii][Nn])\b)'
       comment: 'Returns arcsine of {x} in degrees.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Aa][Ss][Ll][Pp])\b)'
       comment: 'Returns whether a creature is asleep. When asleep the eyes close and the creature becomes\ninsensible to some stimuli. A change of action automatically wakes creature up again. 0=awake,\n1=asleep'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Aa][Tt][Aa][Nn])\b)'
       comment: 'Returns arctangent of {x} in degrees.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Aa][Tt][Tt][Nn])\b)'
-      comment: 'Returns the current focus of attention id.'
+      comment: 'Returns the current focus of attention id of [TARG] creature'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Aa][Tt][Tt][Rr])\b)'
-      comment: 'Return attributes of target.'
+      comment: 'Sets/returns an objects Attributes'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Aa][Vv][Aa][Rr])\b)'
       comment: 'This is the OVxx variable of the agent passed in. It is equivalent to target agent, OVxx, but means\nthat you don''t need to target it first :) You can also use them to implement primitive arrays.'
-      scope: variable.parameter.caos.avar
+      scope: variable.language.caos.lvalue
       set: [rvalue,rvalue]
 
     - match: '(\b([Bb][Aa][Ss][Ee])\b)'
       comment: 'Returns the BASE image for the current agent/part. Returns -1 if an invalid part.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Bb][Hh][Vv][Rr])\b)'
       comment: 'Returns the creature permissions for the target agent.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Bb][Kk][Dd][Ss])\b)'
-      comment: 'Returns a string containing all the background names for the specified metaroom in a comma\nseperated list.'
+      comment: 'Returns a string containing all the background names for the specified metaroom in a comma\nseparated list.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Bb][Kk][Gg][Dd])\b)'
       comment: 'Returns the name of the background file currently shown by the given camera.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Bb][Oo][Dd][Yy])\b)'
       comment: 'Return the set number of the outfit the norn is wearing on the outer most layer or -1 if it is not\nwearing anything'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Bb][Rr][Ee][Dd])\b)'
       comment: 'Returns the variant number for the appearance of the specified body part of the TARG creature'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Bb][Vv][Aa][Rr])\b)'
       comment: 'Returns the variant number for target creature.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Bb][Yy][Ii][Tt])\b)'
       comment: 'Returns 1 if the creature is within reach of the IT agent, or 0 if it isn''t.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Cc][Aa][Bb][Bb])\b)'
       comment: 'Returns relative position of bottom side of cabin.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Cc][Aa][Bb][Ll])\b)'
       comment: 'Returns relative position of left side of cabin.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Cc][Aa][Bb][Pp])\b)'
       comment: 'Returns the plane that passengers of the vehicle are at.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Cc][Aa][Bb][Rr])\b)'
       comment: 'Returns relative position of right side of cabin.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Cc][Aa][Bb][Tt])\b)'
       comment: 'Returns relative position of topside of cabin.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Cc][Aa][Bb][Vv])\b)'
       comment: 'Returns the cabin room number.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Cc][Aa][Gg][Ee])\b)'
       comment: 'Returns the creatures stage of life.\n0 – embryo\n1 – baby\n2 – child\n3 – adolescent\n4 –\nyouth\n5 – adult\n6 – old\n7 – senile'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Cc][Aa][Oo][Ss])\b)'
-      comment: 'Executes the specified CAOS commands instantly. The local environment (_IT_ VAxx TARG OWNR etc.)\nwill be promoted to the script''s environment if inline is non-zero. If state_trans is non-zero,\nthen FROM and OWNR are propogated, if zero, then the script is run orphaned. CAOS returns the output\nof the script. As you can put multiple scripts through in one call, the output is potentially\nconcatenated. Note that all sets of scripts are executed in the same virtual machine if inline is\nnon-zero, otherwise the virtual machine is reset before each script is passed. The params _p0_ and\n_p1_ are passed in as the parameters to the script, even when inline. You can execute "outv 7 endm\nscrp 3 7 11 6 outv 3 endm outv 9", which will make a script 3 7 11 6 and return "79".\nIf throws is\nnon-zero then the system will throw exceptions, otherwise it will return "***" with report set to\nthe exception sid in the CAOS catalogue TAG. If catches is non-zero then the system will catch any\nrun errors encountered and return them in report, having set the return value to "###" first.'
+      comment: 'Executes the specified CAOS commands instantly. The local environment (_IT_ VAxx TARG OWNR etc.)\nwill be promoted to the script''s environment if inline is non-zero. If state_trans is non-zero,\nthen FROM and OWNR are propagated, if zero, then the script is run orphaned. CAOS returns the output\nof the script. As you can put multiple scripts through in one call, the output is potentially\nconcatenated. Note that all sets of scripts are executed in the same virtual machine if inline is\nnon-zero, otherwise the virtual machine is reset before each script is passed. The params _p0_ and\n_p1_ are passed in as the parameters to the script, even when inline. You can execute "outv 7 endm\nscrp 3 7 11 6 outv 3 endm outv 9", which will make a script 3 7 11 6 and return "79".\nIf throws is\nnon-zero then the system will throw exceptions, otherwise it will return "***" with report set to\nthe exception sid in the CAOS catalogue TAG. If catches is non-zero then the system will catch any\nrun errors encountered and return them in report, having set the return value to "###" first.'
       set: [lvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Cc][Aa][Rr][Rr])\b)'
-      comment: 'Object that’s carrying [OWNR].\nFor carryer of [TARG] see [TCAR]'
+      comment: 'Object that’s carrying [OWNR].\nFor carrier of [TARG] see [TCAR]'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Cc][Aa][Tt][Ii])\b)'
       comment: 'Return the category id for the given classifier. The catalogue tag "Agent Classifiers" specifies\nthese, and you can have more than 40. They are tested in order until the first match is found. 39\n(or "unclassified") is always returned if none match.'
       set: [rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Cc][Aa][Tt][Xx])\b)'
       comment: 'Returns the name of the given category. For example, "toy" or "bad bug". The catalogue tag "Agent\nCategories" stores these. If the id is out of range, CATX returns an empty string.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Cc][Hh][Aa][Rr])\b)'
       comment: 'Returns the last character received by the currently selected character translator.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Cc][Hh][Aa][Rr])\b)'
-      comment: 'Returns a character from a string. String indicies begin at 1.'
+      comment: 'Returns a character from a string. String indices begin at 1.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Cc][Hh][Ee][Mm])\b)'
       comment: 'Returns concentration (0.0 to 1.0) of chemical (1 to 255) in the target creature''s bloodstream.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Cc][Ll][Aa][Cc])\b)'
       comment: 'This returns the CLAC action of the TARG object. If the TARG is in CLIK mode, then the return value\nis -2. Otherwise it is the CLAC action.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Cc][Ll][Ii][Kk])\b)'
       comment: 'This returns the CLIK action of the TARG object. If the object is in CLAC mode, then it returns -2,\nelse the return values are as follows:\n0 -> Current click action number (1,2,3)\n1 -> First CLIK\naction.\n2 -> Second CLIK action.\n3 -> Third CLIK action'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Cc][Mm][Rr][Xx])\b)'
       comment: 'CaMeRa centre X co-ordinate.\nThe centre x co-ordinate of the camera in world co-ordinates.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Cc][Mm][Rr][Yy])\b)'
       comment: 'CaMeRa centre Y co-ordinate.\nThe centre y co-ordinate of the camera in world co-ordinates.\nSYS:\nWPOS\nAttempt to position the game window,\nwith the top left corner being at (x,y) of the screen and\nthe window having dimensions width and height.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Cc][Oo][Dd][Ee])\b)'
       comment: 'Returns event script number currently being run by target. Returns -1 if not running anything.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Cc][Oo][Dd][Ff])\b)'
       comment: 'Returns family of script currently being run by target. Returns -1 if not running anything.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Cc][Oo][Dd][Gg])\b)'
       comment: 'Returns genus of script currently being run by target. Returns -1 if not running anything.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Cc][Oo][Dd][Pp])\b)'
       comment: 'Returns the offset into the source code of the next instruction to be executed by the target. Use\nSORC to get the source code. Returns -1 if not running anything.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Cc][Oo][Dd][Ss])\b)'
       comment: 'Returns species of script currently being run by target. Returns -1 if not running anything.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Cc][Oo][Ss][_])'
       comment: 'Returns cosine of theta. Theta should be in degrees.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Cc][Rr][Ee][Aa])\b)'
       comment: 'Returns 1 if the agent is a creature, 0 if not.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Dd][Aa][Tt][Ee])\b)'
       comment: 'Returns the day within the current season, from 0 to GAME "engine_LengthOfSeasonInDays" - 1. See\nalso HIST DATE.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Dd][Aa][Yy][Tt])\b)'
       comment: 'Returns the current day of the month'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Dd][Bb][Gg][#])'
-      comment: 'Dumps debug information for the virtual machine of target. Whatever the type of the variable, a\nstring is output.\nVariable can be:\n-1 : Whether in INST or not\n-2 : Whether in LOCK or not\n-3 :\nCurrent TARG of virtual machine\n-4 : OWNR - should be the same as our outer TARG\n-5 : FROM - who\nsent the message which is being run\n-6 : IT - if a Creature, where their attention was\n-7 : PART -\npart number being worked on for compound agents\n-8 : _P1_ - first parameter of message, if in a\nmessage\n-9 : _P2_ - second parameter of message, if in a mesesage\n0 to 99 : Local variables VA00 to\nVA99'
+      comment: 'Dumps debug information for the virtual machine of target. Whatever the type of the variable, a\nstring is output.\nVariable can be:\n-1 : Whether in INST or not\n-2 : Whether in LOCK or not\n-3 :\nCurrent TARG of virtual machine\n-4 : OWNR - should be the same as our outer TARG\n-5 : FROM - who\nsent the message which is being run\n-6 : IT - if a Creature, where their attention was\n-7 : PART -\npart number being worked on for compound agents\n-8 : _P1_ - first parameter of message, if in a\nmessage\n-9 : _P2_ - second parameter of message, if in a message\n0 to 99 : Local variables VA00 to\nVA99'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Dd][Bb][Gg][Aa])\b)'
       comment: 'Dumps debug information for target. Whatever the type of the variable, a string is output.\nVariable\ncan be:\n0 to 99 : agent variables OV00 to OV99\n-1 : Counter for timer tick'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Dd][Ee][Aa][Dd])\b)'
       comment: 'Creature is dead'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Dd][Ee][Cc][Nn])\b)'
       comment: 'Returns the current focus of decision id.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Dd][Ff][Tt][Xx])\b)'
       comment: 'Returns X coordinate of creature''s down foot.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Dd][Ff][Tt][Yy])\b)'
       comment: 'Returns Y coordinate of creature''s down foot.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Dd][Ii][Rr][Nn])\b)'
       comment: 'Returns the direction the creature is facing.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Dd][Ii][Ss][Qq])\b)'
       comment: 'Returns the square of the distance between the centre points of the target agent, and the other\nagent. It is quicker to compare this square against a squared constant directly, or if you need the\nactual distance use SQRT.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Dd][Oo][Oo][Rr])\b)'
-      comment: 'Returns the door permiability between two rooms.'
+      comment: 'Returns the door permeability between two rooms.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Dd][Oo][Ww][Nn])\b)'
       comment: 'Returns the value of the down constant.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Dd][Rr][Ee][Aa])\b)'
       comment: 'Returns 1 if the creature is asleep and dreaming, 0 otherwise.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Dd][Rr][Ii][Vv])\b)'
-      comment: 'Returns the value (0.0 to 1.0) of the specified drive.\nDRV! (integer)\nReturns the id of the highest\ndrive for the target creature.'
+      comment: 'Returns the value (0.0 to 1.0) of the specified drive.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '([Dd][Rr][Vv][!])'
       comment: 'Returns the id of the highest drive for the target creature.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ee][Ll][Aa][Ss])\b)'
       comment: 'Return the elasticity percentage.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ee][Mm][Ii][Dd])\b)'
-      comment: 'Returns a string containing all the metaroom ids in the world seperated by spaces.'
+      comment: 'Returns a string containing all the metaroom ids in the world separated by spaces.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Ee][Rr][Ii][Dd])\b)'
       comment: 'Returns a string containing all the room ids in the specified metaroom separated by spaces. Returns\nall rooms in the world if metaroom_id is -1.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Ee][Tt][Ii][Kk])\b)'
       comment: 'Returns the number of ticks since the engine was loaded in.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ee][Xx][Pp][Rr])\b)'
-      comment: 'Returns the current facial expression index for the creature. Expressions are as follows:\nEXPR_NORMAL = 0, EXPR_HAPPY =1, EXPR_SAD = 2, EXPR_ANGRY= 3, EXPR_SURPRISE = 4, EXPR_SLEEPY = 5,\nEXPR_VERY_SLEEPY = 6, EXPR_VERY_HAPPY = 7, EXPR_MISCHEVIOUS = 8, EXPR_SCARED = 9, EXPR_ILL = 10,\nEXPR_HUNGRY = 11'
+      comment: 'Returns the current facial expression index for the creature. Expressions are as follows:\nEXPR_NORMAL = 0, EXPR_HAPPY =1, EXPR_SAD = 2, EXPR_ANGRY= 3, EXPR_SURPRISE = 4, EXPR_SLEEPY = 5,\nEXPR_VERY_SLEEPY = 6, EXPR_VERY_HAPPY = 7, EXPR_MISCHIEVOUS = 8, EXPR_SCARED = 9, EXPR_ILL = 10,\nEXPR_HUNGRY = 11'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ff][Aa][Cc][Ee])\b)'
       comment: 'Returns the front facing pose for the current facial expression. See the FACE string rvalue.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ff][Aa][Cc][Ee])\b)'
       comment: 'Returns the name of the sprite file for the target creature''s face. Currently automatically gives\nyou the youngest age version of the gallery but soon will work in the following way: If you set the\nparameter to -1 you will get the name of the file the creature is currently using. Note that when\nthe creature ages, this file name will change (the GALL command could be useful here). If you set\nthe parameter to a particular age then the filename returned will be the gallery that best matches\nthat age. Use the FACE integer rvalue to get the pose number for facing forwards.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Ff][Aa][Ll][Ll])\b)'
       comment: 'Returns 1 if target is moving under the influence of gravity, or 0 if it is at rest.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ff][Ll][Tt][Xx])\b)'
       comment: 'This returns the X position of the TARG object''s floating vector.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Ff][Ll][Tt][Yy])\b)'
       comment: 'This returns the Y position of the TARG object''s floating vector.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Ff][Mm][Ll][Yy])\b)'
       comment: 'Returns the object’s family'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ff][Rr][Ii][Cc])\b)'
       comment: 'Return physics friction percentage.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ff][Rr][Oo][Mm])\b)'
       comment: 'If we''re processing a message, this is the OWNR who sent the message. NULL if the message was sent\nfrom an injected script or an install script. If the message was sent over the network using NET:\nWRIT, then this contains the user id of the sender, as a string.'
-      scope: variable.parameter.caos.from
       pop: true
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Ff][Tt][Oo][Ii])\b)'
       comment: 'Converts a floating-point value into its integer equivalent.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ff][Vv][Ww][Mm])\b)'
-      comment: 'This returns a guaranteed-safe filename for use in world names, jornal file names, etc.'
+      comment: 'This returns a guaranteed-safe filename for use in world names, journal file names, etc.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Gg][Aa][Mm][Ee])\b)'
-      comment: 'A game variable is a global variable which can be referenced by name.\neg: SETV GAME "pi" 3.142\nGame\nvariables are stored as part of the world and so will be saved out in the world file. If a script\nuses a non-existant game variable, that variable will be created automatically (with undefined\ncontents). Agents, integers, floats and strings can be stored in game variables. Variable names are\ncase sensitive.\nThere are some conventions for the variable names:\nengine_ for Creatures Engine\ncav_\nfor Creatures Adventures\nc3_ for Creatures 3\nIt''s important to follow these, as 3rd party\ndevelopers will just use whatever names they fancy. DELG deletes a game variable. See also the table\nof engine Game Variables.'
-      scope: variable.parameter.caos.game
+      comment: 'A game variable is a global variable which can be referenced by name.\neg: SETV GAME "pi" 3.142\nGame\nvariables are stored as part of the world and so will be saved out in the world file. If a script\nuses a non-existent game variable, that variable will be created automatically (with undefined\ncontents). Agents, integers, floats and strings can be stored in game variables. Variable names are\ncase sensitive.\nThere are some conventions for the variable names:\nengine_ for Creatures Engine\ncav_\nfor Creatures Adventures\nc3_ for Creatures 3\nIt''s important to follow these, as 3rd party\ndevelopers will just use whatever names they fancy. DELG deletes a game variable. See also the table\nof engine Game Variables.'
+      scope: variable.language.caos.lvalue
       set: [rvalue]
 
     - match: '(\b([Gg][Aa][Mm][Nn])\b)'
       comment: 'Enumerates through game variable names. Pass in an empty string to find the first one, and then the\nprevious one to find the next. Empty string is returned at the end.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Gg][Mm][Aa][Pp])\b)'
       comment: 'Returns the metaroom id at point x,y on the map. If the point is outside the room system, it\nreturns -1.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Gg][Nn][Aa][Mm])\b)'
       comment: 'Returns the game name. For example "Creatures 3".'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Gg][Nn][Uu][Ss])\b)'
       comment: 'Returns the object''s genus'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Gg][Rr][Aa][Pp])\b)'
       comment: 'Returns the room id at point x,y on the map. If the point is outside the room system, it returns\n-1.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Gg][Rr][Ii][Dd])\b)'
       comment: 'Returns the ID of a room adjacent to the agent in the given direction. A straight line is drawn\nfrom the centre of the agent until it hits a room. Directions are LEFT, RGHT, _UP_, or DOWN. A value\nof -1 is returned if no room can be found.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Gg][Tt][Oo][Ss])\b)'
       comment: 'Returns the target''s moniker in the given gene variable slot. This universally unique identifier\nis the name of a genetics file. Slot 0 is a creature''s actual genome. Other slots are used in\npregnant creatures, eggs and other places.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Hh][Aa][Nn][Dd])\b)'
       comment: 'This returns the name of the hand.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Hh][Ee][Aa][Pp])\b)'
       comment: 'Returns heap and garbage collection information.\n0 - current allocated heap memory (development\nbuilds only)\n1 - total agents, including ones waiting to be garbage collected\n2 - similar, but just\nfor creatures'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Hh][Ee][Dd][Xx])\b)'
       comment: 'This returns the X position of the TARG creature''s specified attachment point in absolute (map)\ncoordinates. Attachments go in this order: 0 - neck 1- mouth 2 - left ear 3- right ear 4 - hair (top\nof head)'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Hh][Ee][Dd][Yy])\b)'
       comment: 'This returns the Y position of the TARG creature''s specified attachment point in absolute (map)\ncoordinates. Attachments go in this order: 0 - neck 1- mouth 2 - left ear 3- right ear 4 - hair (top\nof head)'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Hh][Ee][Ll][Dd])\b)'
       comment: 'Returns the item currently held by the target. For vehicles this returns a random carried agent if\ncarrying more than one. Consider using EPAS instead.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Hh][Gg][Hh][Tt])\b)'
       comment: 'Returns objects height'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Hh][Hh][Ll][Dd])\b)'
       comment: 'Returns the creature currently holding hands with the pointer agent. NULL if no agent is holding\nhands.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Hh][Ii][Rr][Pp])\b)'
       comment: 'Returns id of the room adjacent to this one with the highest concentration of the given CA.\ndirection is 0 for left/right, 1 for any direction.'
       set: [rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Cc][Aa][Gg][Ee])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST CAGE (integer) MONIKER (string) EVENT_NO (integer)\nReturns the life stage of the creature when\nthe given life event happened.'
+      comment: 'Returns the life stage of the creature when the given life event happened.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Cc][Oo][Uu][Nn])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST COUN (integer) MONIKER (string)\nReturns the number of life events that there are for the given\nmoniker. Returns 0 of there are no events, or the moniker doesn''t exist.'
+      comment: 'Returns the number of life events that there are for the given moniker. Returns 0 of there are no\nevents, or the moniker doesn''t exist.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Cc][Rr][Oo][Ss])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST CROS (integer) MONIKER (string)\nReturns the number of crossover points when the genome was\nmade by splicing its parents genomes.'
+      comment: 'Returns the number of crossover points when the genome was made by splicing its parents genomes.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Dd][Aa][Tt][Ee])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST DATE (integer) WORLD_TICK (integer)\nReturns the day within the current season. This is the\nsame as DATE. See also WTIK and HIST WTIK.'
+      comment: 'Returns the day within the current season. This is the same as DATE. See also WTIK and HIST WTIK.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Ff][Ii][Nn][Dd])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST FIND (integer) MONIKER (string) EVENT_TYPE (integer) FROM_INDEX (integer)\nSearches for a life\nevent of a certain HIST TYPE for the given moniker. The search begins at the life event after the\nfrom index. Specify -1 to find the first event. Returns the event number, or -1 if there is no\nmatching event.'
+      comment: 'Searches for a life event of a certain HIST TYPE for the given moniker. The search begins at the\nlife event after the from index. Specify -1 to find the first event. Returns the event number, or -1\nif there is no matching event.'
       set: [rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Ff][Ii][Nn][Rr])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST FINR (integer) MONIKER (string) EVENT_TYPE (integer) FROM_INDEX (integer)\nReverse searches for\na life event of a certain HIST TYPE for the given moniker. The search begins at the life event\nbefore the from index. Specify -1 to find the last event. Returns the event number, or -1 if there\nis no matching event.'
+      comment: 'Reverse searches for a life event of a certain HIST TYPE for the given moniker. The search begins\nat the life event before the from index. Specify -1 to find the last event. Returns the event\nnumber, or -1 if there is no matching event.'
       set: [rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Ff][Oo][Tt][Oo])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST FOTO (string) MONIKER (string) EVENT_NO (integer)\nFor the given life event, returns the\nfilename of the associated photograph, or an empty string if there is no photo.'
+      comment: 'For the given life event, returns the filename of the associated photograph, or an empty string if\nthere is no photo.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Gg][Ee][Nn][Dd])'
       captures:
@@ -2339,7 +2345,7 @@ contexts:
         2: entity.name.function.caos
       comment: 'Returns the sex that the creature with the given moniker has or had. 1 for male, 2 for female. If\nthe creature hasn''t been born yet, returns -1.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Gg][Nn][Uu][Ss])'
       captures:
@@ -2347,7 +2353,7 @@ contexts:
         2: entity.name.function.caos
       comment: 'Returns the genus of the moniker. This is 1 for Norn, 2 for Grendel, 3 for Ettin by convention.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Mm][Oo][Nn][1])'
       captures:
@@ -2355,7 +2361,7 @@ contexts:
         2: entity.name.function.caos
       comment: 'For the given life event, returns the first associated moniker.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Mm][Oo][Nn][2])'
       captures:
@@ -2363,55 +2369,55 @@ contexts:
         2: entity.name.function.caos
       comment: 'For the given life event, returns the second associated moniker.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Mm][Uu][Tt][Ee])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST MUTE (integer) MONIKER (string)\nReturns the number of point mutations the genome received\nduring crossover from its parents.'
+      comment: 'Returns the number of point mutations the genome received during crossover from its parents.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Nn][Aa][Mm][Ee])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST NAME (string) MONIKER (string)\nReturns the name of the creature with the given moniker.'
+      comment: 'Returns the name of the creature with the given moniker.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Nn][Ee][Xx][Tt])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST NEXT (string) MONIKER (string)\nReturns the next moniker which has a history, or an empty\nstring if we''re at the end already. If the specified moniker is an empty string or doesn''t have a\nhistory, then the first moniker with a history entry is returned, or an empty string if there isn''t\none.'
+      comment: 'Returns the next moniker which has a history, or an empty string if we''re at the end already. If\nthe specified moniker is an empty string or doesn''t have a history, then the first moniker with a\nhistory entry is returned, or an empty string if there isn''t one.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Pp][Rr][Ee][Vv])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST PREV (string) MONIKER (string)\nReturns the previous moniker which has a history. If the\nspecified moniker is an empty string or doesn''t have a history, then the last moniker with a\nhistory entry is returned, or an empty string if there isn''t one.'
+      comment: 'Returns the previous moniker which has a history. If the specified moniker is an empty string or\ndoesn''t have a history, then the last moniker with a history entry is returned, or an empty string\nif there isn''t one.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Rr][Tt][Ii][Mm])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST RTIM (integer) MONIKER (string) EVENT_NO (integer)\nReturns the real world time when the given\nlife event happened. This is measured in seconds since midnight, 1 January 1970 in UTC. To display,\nuse RTIF.'
+      comment: 'Returns the real world time when the given life event happened. This is measured in seconds since\nmidnight, 1 January 1970 in UTC. To display, use RTIF.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Ss][Ee][Aa][Nn])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST SEAN (integer) WORLD_TICK (integer)\nReturns the current season for a given world tick. This is\nthe same as SEAN. See also WTIK and HIST WTIK.'
+      comment: 'Returns the current season for a given world tick. This is the same as SEAN. See also WTIK and HIST\nWTIK.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Tt][Aa][Gg][Ee])'
       captures:
@@ -2419,439 +2425,439 @@ contexts:
         2: entity.name.function.caos
       comment: 'Returns the age in ticks of the creature when the given life event happened to it. If the creature\nwas not in the world, wasn''t born yet, or was fully dead, then -1 is returned. If the creature was\ndead, but its body still in the world, then its age on death is returned. See also TAGE.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Tt][Ii][Mm][Ee])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST TIME (integer) WORLD_TICK (integer)\nReturns the time of day for a given world tick. This is\nthe same as TIME. See also WTIK and HIST WTIK.'
+      comment: 'Returns the time of day for a given world tick. This is the same as TIME. See also WTIK and HIST\nWTIK.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Tt][Yy][Pp][Ee])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST TYPE (integer) MONIKER (string) EVENT_NO (integer)\nFor the given life event, returns its\ntype.\nAll histories begin with one of the following four events. You can read the associated\nmonikers with HIST MON1 and HIST MON2.\n0 Conceived - a natural start to life, associated monikers\nare the mother''s and father''s\n1 Spliced - created using GENE CROS to crossover the two associated\nmonikers\n2 Engineered - from a human made genome with GENE LOAD, the first associated moniker is\nblank, and the second is the filename\n14 Cloned - such as when importing a creature that already\nexists in the world and reallocating the new moniker, when TWINing or GENE CLONing; associated\nmoniker is who we were cloned from\nThe following events happen during a creature''s life:\n3 Born -\ntriggered by the BORN command, associated monikers are the parents.\n4 Aged - reached the next life\nstage, either naturally from the ageing loci or with AGES\n5 Exported - emmigrated to another world\n6\nImported - immigrated back again\n7 Died - triggered naturally with the death trigger locus, or by\nthe DEAD command\n8 Became pregnant - the first associated moniker is the child, and the second the\nfather\n9 Impregnated - first associated moniker is the child, second the mother\n10 Child born -\nfirst moniker is the child, second the other parent\n15 Clone source - someone was cloned from you,\nfirst moniker is whom\n16 Warped out - exported through a worm hole with NET: EXPO\n17 Warped in -\nimported through a worm hole\nThese events aren''t triggered by the engine, but reserved for CAOS to\nuse with these numbers:\n11 Laid by mother\n12 Laid an egg\n13 Photographed\nOther numbers can also be\nused for custom life events. Start with numbers 100 and above, as events below that are reserved for\nthe engine. You send your own events using HIST EVNT.'
+      comment: 'For the given life event, returns its type.\nAll histories begin with one of the following four\nevents. You can read the associated monikers with HIST MON1 and HIST MON2.\n0 Conceived - a natural\nstart to life, associated monikers are the mother''s and father''s\n1 Spliced - created using GENE\nCROS to crossover the two associated monikers\n2 Engineered - from a human made genome with GENE\nLOAD, the first associated moniker is blank, and the second is the filename\n14 Cloned - such as when\nimporting a creature that already exists in the world and reallocating the new moniker, when TWINing\nor GENE CLONing; associated moniker is who we were cloned from\nThe following events happen during a\ncreature''s life:\n3 Born - triggered by the BORN command, associated monikers are the parents.\n4\nAged - reached the next life stage, either naturally from the ageing loci or with AGES\n5 Exported -\nemigrated to another world\n6 Imported - immigrated back again\n7 Died - triggered naturally with the\ndeath trigger locus, or by the DEAD command\n8 Became pregnant - the first associated moniker is the\nchild, and the second the father\n9 Impregnated - first associated moniker is the child, second the\nmother\n10 Child born - first moniker is the child, second the other parent\n15 Clone source - someone\nwas cloned from you, first moniker is whom\n16 Warped out - exported through a worm hole with NET:\nEXPO\n17 Warped in - imported through a worm hole\nThese events aren''t triggered by the engine, but\nreserved for CAOS to use with these numbers:\n11 Laid by mother\n12 Laid an egg\n13 Photographed\nOther\nnumbers can also be used for custom life events. Start with numbers 100 and above, as events below\nthat are reserved for the engine. You send your own events using HIST EVNT.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Uu][Tt][Xx][Tt])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST UTXT (string) MONIKER (string) EVENT_NO (integer)\nFor the given life event, returns the user\ntext.'
+      comment: 'For the given life event, returns the user text.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Vv][Aa][Rr][Ii])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST VARI (integer) MONIKER (string)\nReturns the variant that the creature with the given moniker\nhas or had. If the creature hasn''t been born yet, returns -1.'
+      comment: 'Returns the variant that the creature with the given moniker has or had. If the creature hasn''t\nbeen born yet, returns -1.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Ww][Nn][Aa][Mm])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST WNAM (string) MONIKER (string) EVENT_NO (integer)\nReturns the name of the world the given life\nevent happened in.'
+      comment: 'Returns the name of the world the given life event happened in.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Ww][Tt][Ii][Kk])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST WTIK (integer) MONIKER (string) EVENT_NO (integer)\nReturns the world tick when the life event\nhappened, for the world that the event happened in.'
+      comment: 'Returns the world tick when the life event happened, for the world that the event happened in.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Ww][Uu][Ii][Dd])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST WUID (string) MONIKER (string) EVENT_NO (integer)\nReturns the unique identifier of the world\nthe given life event happened in.'
+      comment: 'Returns the unique identifier of the world the given life event happened in.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '([Hh][Ii][Ss][Tt])\s*([Yy][Ee][Aa][Rr])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'HIST YEAR (integer) WORLD_TICK (integer)\nReturns the number of game years elapsed for a given world\ntick. This is the same as YEAR. See also WTIK and HIST WTIK.'
+      comment: 'Returns the number of game years elapsed for a given world tick. This is the same as YEAR. See also\nWTIK and HIST WTIK.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Hh][Oo][Tt][Ss])\b)'
       comment: 'Returns the agent nearest the screen under the hotspot of the pointer. For each agent, TRAN decides\nwhether this allows for transparent pixels.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Ii][Ii][Tt][Tt])\b)'
       comment: 'Returns the target creature''s current agent of attention. Compare _IT_.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Ii][Mm][Ss][Kk])\b)'
       comment: 'Returns the input event mask.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ii][Nn][Nn][Ff])\b)'
       comment: 'Retrieves a float from the input stream, delimited by white space. Defaults to 0.0 if no valid\ndata.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Ii][Nn][Nn][Ii])\b)'
       comment: 'Retrieves an integer from the input stream, delimited by white space. Defaults to 0 if no valid\ndata.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ii][Nn][Nn][Ll])\b)'
       comment: 'Retrieves a line of text from the input stream.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Ii][Nn][Oo][Kk])\b)'
       comment: 'Returns 1 if the input stream is good, or 0 if it is bad. A bad stream could be a non existent\nfile, or the end of file reached. If the stream has never been opened at all, an error is\ndisplayed.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Ii][Nn][Ss][#])'
       comment: 'Returns the number of instincts the creature still has left to process. Instincts are processed in\nthe egg and during sleep.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ii][Tt][Oo][Ff])\b)'
       comment: 'Converts an integer value into its floating-point equivalent.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Kk][Ee][Yy][Dd])\b)'
       comment: 'Returns 1 if the specified key is currently pressed down, 0 if not.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ll][Aa][Nn][Gg])\b)'
       comment: 'Returns preferred language id eg fr - french german - de.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Ll][Ee][Ff][Tt])\b)'
       comment: 'Returns the value of the left constant.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ll][Ii][Nn][Kk])\b)'
       comment: 'Returns the permiability of the link between the rooms specified or 0 if no link exists.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ll][Oo][Cc][Ii])\b)'
       comment: 'Reads a biochemical locus value.'
       set: [rvalue,rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Ll][Oo][Ff][Tt])\b)'
       comment: 'Declares that you have finished with a photograph image file taken by SNAP. If the file is in use\nin a gallery, this function fails and returns 1. Otherwise it returns 0. The file will be marked for\nthe attic, and moved there later.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ll][Oo][Rr][Pp])\b)'
       comment: 'Returns id of the room adjacent to this one with the lowest concentration of the given CA.\ndirection is 0 for left/right, 1 for any direction.'
       set: [rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Mm][Aa][Pp][Hh])\b)'
       comment: 'Returns the total height of the map.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Mm][Aa][Pp][Ww])\b)'
       comment: 'Returns the total width of the map.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Mm][Ee][Tt][Aa])\b)'
       comment: 'Returns the metaroom id that the current camera is looking at.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Mm][Ii][Rr][Aa])\b)'
       comment: 'Is the current sprite for this agent mirrored (returns 1) or not (returns 0)'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Mm][Ll][Oo][Cc])\b)'
-      comment: 'Returns the location of the specified metaroom as a string formated as follows: x y width height.'
+      comment: 'Returns the location of the specified metaroom as a string formatted as follows: x y width height.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Mm][Mm][Ss][Cc])\b)'
       comment: 'Returns the name of the music track played at the metaroom in the given location.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Mm][Oo][Nn][Tt])\b)'
       comment: 'Returns the month of the year'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Mm][Oo][Pp][Xx])\b)'
       comment: 'Returns x position of mouse in world coordinates.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Mm][Oo][Pp][Yy])\b)'
       comment: 'Returns y position of mouse in world coordinates.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Mm][Oo][Vv][Ss])\b)'
       comment: 'Returns the movement status of the target.\n0 Autonomous\n1 Mouse driven\n2 Floating\n3 In vehicle\n4\nCarried'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Mm][Oo][Vv][Xx])\b)'
       comment: 'Returns horizontal mouse velocity.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Mm][Oo][Vv][Yy])\b)'
       comment: 'Returns vertical mouse velocity.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Mm][Oo][Ww][Ss])\b)'
       comment: 'Returns whether the lawn was cut last Sunday or not.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Mm][Ss][Ee][Cc])\b)'
       comment: 'Returns a time stamp measured in milliseconds. It is not specified when the time is measured from;\nthe stamp is only guaranteed to be consistent during one session.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Mm][Tt][Hh][Xx])\b)'
       comment: 'This returns the X position of the TARG creature''s mouth attachment point in absolute (map)\ncoordinates.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Mm][Tt][Hh][Yy])\b)'
       comment: 'This returns the Y position of the TARG creature''s mouth attachment point in absolute (map)\ncoordinates.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Mm][Tt][Oo][Aa])\b)'
       comment: 'Returns the agent which references the given moniker. The moniker could be stored in any of the\ngene slots for that agent, including the special slot 0 for a creature. If the moniker is not\ncurrently used in the game, then returns NULL. This command can be slow - use MTOC if possible.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Mm][Tt][Oo][Cc])\b)'
       comment: 'Returns the creature with the given moniker. If there is no agent alive with that moniker, then\nreturns NULL. See also MTOA.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Mm][Uu][Tt][Ee])\b)'
-      comment: 'This returns (and potentially sets) the mute values for the sound managers in the game. Sensible\nsettings for the parameters are as follows:\nandMask  eorMask returns\n0  3 3 - Mutes both sound and\nmusic\n3  0 0 for no mute\n1 for sound muted\n2 for music muted\n3 for both muted\nSets\nnothing\n1 2 Returns 2 for music muted, or 3 for both muted\nOnly sets mute on music, leaves sound\nalone'
+      comment: 'This returns (and potentially sets) the mute values for the sound managers in the game. Sensible\nsettings for the parameters are as follows:\nandMask  eorMask returns\n0 3 3 - Mutes both sound and\nmusic\n3  0 0 for no mute\n1 for sound muted\n2 for music muted\n3 for both muted\nSets\nnothing\n1 2 Returns 2 for music muted, or 3 for both muted\nOnly sets mute on music, leaves sound\nalone'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Mm][Vv][0-9][0-9])\b)'
       comment: 'MV00 to MV99 are variables specific to an agent. They are read from [OWNR], the owner agent of the\ncurrent script. These are the exact same variables as [OVxx], except read from [OWNR] not [TARG]. If\n[OWNR] and [TARG] are the same, then OV23 is MV23, for example.\n@range(0 to 99)'
-      scope: variable.parameter.caos.mvxx
+      scope: variable.other.member.caos
       pop: true
 
     - match: '(\b([Nn][Cc][Ll][Ss])\b)'
       comment: 'Finds the next agent in the agent list which also matches the given classifier. If the previous\nagent doesn''t exist or doesn''t match the classifier then the first agent matching it is returned.\nIf none match the classifier, then NULL is returned.'
       set: [rvalue,rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Nn][Oo][Rr][Nn])\b)'
       comment: 'Returns the creature currently selected by the user.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Nn][Pp][Gg][Ss])\b)'
       comment: 'Returns the number of available pages for current text part.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Nn][Uu][Ll][Ll])\b)'
       comment: 'Returns a null agent pointer.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Nn][Ww][Ll][Dd])\b)'
       comment: 'Returns the number of world directories.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Oo][Bb][Ss][Tt])\b)'
-      comment: 'Returns the distance from the agent to the nearest wall that it might collide with in the given\ndirection. Directions are LEFT, RGHT, _UP_, or DOWN. If the distance to the collsion is greater than\nRNGE then a very large number is returned.'
+      comment: 'Returns the distance from the agent to the nearest wall that it might collide with in the given\ndirection. Directions are LEFT, RGHT, _UP_, or DOWN. If the distance to the collision is greater\nthan RNGE then a very large number is returned.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Oo][Nn][Tt][Vv])\b)'
       comment: 'Checks if the given agent, or any of its parts, is on screen and returns 1 if it is or 0 if it is\nnot. Set to 0 to check if the agent is on the main camera. Set to 1 to check if the agent is on the\nmain camera or any remote cameras'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Oo][Oo][Ww][Ww])\b)'
       comment: 'Returns the status of the moniker.\n0 - never existed, or history purged\n1 - genome referenced by a\nslot, for example an egg\n2 - creature made with NEW: CREA\n3 - creature properly BORN\n4 - out of\nworld, exported\n5 - dead, body still exists\n6 - dead, body KILLed\n7 - unreferenced genome'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Oo][Rr][Gg][Ff])\b)'
-      comment: 'Returns floating point data about the specified organ. The organ number is from 0 to ORGN - 1. The\ndata parameter specifies what information is returned:\n0 - Clock rate in updates per tick (as\nlocus)\n1 - Short term life force as a proportion of intial (as locus)\n2 - Factor to modulate rate of\nrepair (as locus)\n3 - Injury to apply (as locus)\n4 - Initial life force, a million is the largest\ninitial value\n5 - Short term life force, temporary damage\n6 - Long term life force, permanent\ndamage\n7 - Long term rate damage during repair\n8 - Energy cost to run this organ, calculated from\nthe number of receptors, emitters and reactions\n9 - Damage done to the organ if no energy is\navailable'
+      comment: 'Returns floating point data about the specified organ. The organ number is from 0 to ORGN - 1. The\ndata parameter specifies what information is returned:\n0 - Clock rate in updates per tick (as\nlocus)\n1 - Short term life force as a proportion of initial (as locus)\n2 - Factor to modulate rate\nof repair (as locus)\n3 - Injury to apply (as locus)\n4 - Initial life force, a million is the largest\ninitial value\n5 - Short term life force, temporary damage\n6 - Long term life force, permanent\ndamage\n7 - Long term rate damage during repair\n8 - Energy cost to run this organ, calculated from\nthe number of receptors, emitters and reactions\n9 - Damage done to the organ if no energy is\navailable'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Oo][Rr][Gg][Ii])\b)'
       comment: 'Returns integer data about the specified organ. The organ number is from 0 to ORGN - 1. The data\nparameter specifies what information is returned:\n0 - receptor count\n1 - emitter count\n2 - reaction\ncount.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Oo][Rr][Gg][Nn])\b)'
       comment: 'Returns the number of organs in the creature'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Oo][Vv][0-9][0-9])\b)'
       comment: 'OV00 to OV99 are variables specific to an agent. They are read from [TARG], the target agent. You\ncan also access these same variables via [OWNR] using [MVxx].\n@range(0 to 99)'
-      scope: variable.parameter.caos.ovxx
+      scope: variable.other.member.caos
       pop: true
 
     - match: '(\b([Oo][Ww][Nn][Rr])\b)'
       comment: 'default object (owner of script, or pet if [DDE])'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Pp][Aa][Cc][Ee])\b)'
-      comment: 'Returns the tick rate satisfaction factor.\nFactor 1 - ticks are taking the time we would expect\nthem to, which is 0.05 secs.\nFactor more than 1 - the engine is running too slowly.\nFactor less than\n1 - the engine is leaving spare processing time.\nThis is averaged over the last 10 ticks.\nAgents can\nlook at this to adjust the resources they use according to current spare processing time. For\nexample, if you have a random snowflake generator in winter, you could increase the chance of\ngeneration if PACE is low, and decrease the chance if PACE is high. When you do this remember that\ncomputers will be arbitarily faster in the future, so you should place an extra upper limit on the\nnumber of snowflakes to stop them filling the whole screen.\nNote that PACE only measures the time\nthe engine takes for tick processing, not for handling requests from external applications, or\nadding Windows events to its internal queue. Because of this, you should aim for a value which is a\nbit less than 1.\nCompare RACE.'
+      comment: 'Returns the tick rate satisfaction factor.\nFactor 1 - ticks are taking the time we would expect\nthem to, which is 0.05 secs.\nFactor more than 1 - the engine is running too slowly.\nFactor less than\n1 - the engine is leaving spare processing time.\nThis is averaged over the last 10 ticks.\nAgents can\nlook at this to adjust the resources they use according to current spare processing time. For\nexample, if you have a random snowflake generator in winter, you could increase the chance of\ngeneration if PACE is low, and decrease the chance if PACE is high. When you do this remember that\ncomputers will be arbitrarily faster in the future, so you should place an extra upper limit on the\nnumber of snowflakes to stop them filling the whole screen.\nNote that PACE only measures the time\nthe engine takes for tick processing, not for handling requests from external applications, or\nadding Windows events to its internal queue. Because of this, you should aim for a value which is a\nbit less than 1.\nCompare RACE.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Pp][Aa][Gg][Ee])\b)'
       comment: 'Returns the current page for current text part. See the PAGE command for more information.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Pp][Aa][Uu][Ss])\b)'
       comment: 'Returns 1 if the target agent is paused, or 0 otherwise.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Pp][Aa][Ww][Ss])\b)'
       comment: 'Returns 1 for debug pawsed, 0 for playing. See DBG: PAWS.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Pp][Cc][Ll][Ss])\b)'
       comment: 'Same as NCLS, only cycles the other way.'
       set: [rvalue,rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Pp][Ee][Rr][Mm])\b)'
       comment: 'Returns the target''s map permiability.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Pp][Ll][Nn][Ee])\b)'
       comment: 'Returns the screen depth plane of the principal part.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Pp][Nn][Tt][Rr])\b)'
       comment: 'The hand/pointer object.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Pp][Oo][Ss][Bb])\b)'
       comment: 'Returns bottom position of target''s bounding box.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Pp][Oo][Ss][Ee])\b)'
       comment: 'Returns the objects (or parts) pose – i.e. which image number it is currently using'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Pp][Oo][Ss][Ll])\b)'
       comment: 'Returns left position of target''s bounding box.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Pp][Oo][Ss][Rr])\b)'
       comment: 'Returns right position of target''s bounding box.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Pp][Oo][Ss][Tt])\b)'
       comment: 'Returns top position of target''s bounding box.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Pp][Oo][Ss][Xx])\b)'
       comment: 'Returns X position of centre of target.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Pp][Oo][Ss][Yy])\b)'
       comment: 'Returns Y position of centre of target.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '([Pp][Rr][Aa][Yy])\s*([Aa][Gg][Tt][Ii])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRAY AGTI (integer) RESOURCE_NAME (string) INTEGER_TAG (string) DEFAULT_VALUE (integer)\nThis\nreturns the value of the integer tag associated with the named resource. If the resource does not\ncontain such a tag, then the default value specified is returned. This call pairs with PRAY AGTS.'
+      comment: 'This returns the value of the integer tag associated with the named resource. If the resource does\nnot contain such a tag, then the default value specified is returned. This call pairs with PRAY\nAGTS.'
       set: [rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Pp][Rr][Aa][Yy])\s*([Aa][Gg][Tt][Ss])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRAY AGTS (string) RESOURCE_NAME (string) STRING_TAG (string) DEFAULT_VALUE (string)\nThis returns\nthe value of the string tag associated with the named resource. If the resource does not contain\nsuch a tag, then the default value specified is returned. This call pairs with PRAY AGTI.'
+      comment: 'This returns the value of the string tag associated with the named resource. If the resource does\nnot contain such a tag, then the default value specified is returned. This call pairs with PRAY\nAGTI.'
       set: [rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '([Pp][Rr][Aa][Yy])\s*([Cc][Oo][Uu][Nn])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRAY COUN (integer) RESOURCE_TYPE (string)\nThis returns the number of resource chunks which are\ntagged with the resource type passed in. Resource types are four characters only. Anything over that\nlength will be silently truncated.'
+      comment: 'This returns the number of resource chunks which are tagged with the resource type passed in.\nResource types are four characters only. Anything over that length will be silently truncated.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Pp][Rr][Aa][Yy])\s*([Dd][Ee][Pp][Ss])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRAY DEPS (integer) RESOURCE_NAME (string) DO_INSTALL (integer)\nThis performs a scan of the\nspecified resource, and checks out the dependency data. The primary use for this would be in the\npreparation for injection of agents. If you pass zero in the do_install parameter, then the\ndependencies are only checked. If do_install is non-zero, then they are installed also. The return\nvalues are as follows:\n0 = Success\n-1 = Agent Type not found\n-2 = Dependency Count not found\n-3 to\n-(2 + count) is the dependency string missing\n-(3+count) to -(2+2*count) is the dependency type\nmissing\n2*count to 3*count is the category ID for that dependency being invalid\n1 to count is the\ndependency failing'
+      comment: 'This performs a scan of the specified resource, and checks out the dependency data. The primary use\nfor this would be in the preparation for injection of agents. If you pass zero in the do_install\nparameter, then the dependencies are only checked. If do_install is non-zero, then they are\ninstalled also. The return values are as follows:\n0 = Success\n-1 = Agent Type not found\n-2 =\nDependency Count not found\n-3 to -(2 + count) is the dependency string missing\n-(3+count) to\n-(2+2*count) is the dependency type missing\n2*count to 3*count is the category ID for that\ndependency being invalid\n1 to count is the dependency failing'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Pp][Rr][Aa][Yy])\s*([Ee][Xx][Pp][Oo])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRAY EXPO (integer) CHUNK_TYPE (string)\nThis function exports the target creature. If the creature\nis exported successfully then it has been removed from the world. Returns value is one of the\nfollowing:\n0 for success\n1 if the creature, or if pregnant any of its offspring, are already on disk\nin some form.\nThe chunk type should be used to find the creature again to import it. In Creatures 3,\nmost exported creatures have a chunk type EXPC, and the starter family uses SFAM.\nFor new games, you\nshould not use SFAM, as its data would get confused with that of an EXPC with the same moniker. This\nis for backwards compatibility with Creatures 3''s use of SFAM, which works because the CAOS code\nguarantees different monikers.\nFor other chunk names, creatures exported with a different type are\nkept entirely separately, and will not get confused with each other. The chunk type is added to the\nend of the moniker to form the chunk name.\nThe exported creature has some fields associated with it,\nthat can be read by PRAY AGTI or PRAY AGTS before importing:\n"Exported At World Time"\ninteger\n"Creature Age In Ticks" integer\n"Exported At Real Time" integer\n"Creature Life Stage"\ninteger\n"Exported From World Name" string\n"Exported From World UID" string\n"Native Network User"\nstring\n"Last Network User" (could be faked, NET: FROM is safer) string\n"Creature Name"\nstring\n"Gender" integer\n"Genus" integer\n"Variant" integer\n"Head Gallery" string (this is calculated\non the sending computer, so the file may be missing on the receiving one - try LIMB\ninstead)\n"Pregnancy Status" integer\nIn addition you can add custom fields by setting NAME variables\non the Creature before export. Any strings or integers whose name begin "Pray Extra " are added as\nentries to the export file.'
+      comment: 'This function exports the target creature. If the creature is exported successfully then it has\nbeen removed from the world. Returns value is one of the following:\n0 for success\n1 if the creature,\nor if pregnant any of its offspring, are already on disk in some form.\nThe chunk type should be used\nto find the creature again to import it. In Creatures 3, most exported creatures have a chunk type\nEXPC, and the starter family uses SFAM.\nFor new games, you should not use SFAM, as its data would\nget confused with that of an EXPC with the same moniker. This is for backwards compatibility with\nCreatures 3''s use of SFAM, which works because the CAOS code guarantees different monikers.\nFor\nother chunk names, creatures exported with a different type are kept entirely separately, and will\nnot get confused with each other. The chunk type is added to the end of the moniker to form the\nchunk name.\nThe exported creature has some fields associated with it, that can be read by PRAY AGTI\nor PRAY AGTS before importing:\n"Exported At World Time" integer\n"Creature Age In Ticks"\ninteger\n"Exported At Real Time" integer\n"Creature Life Stage" integer\n"Exported From World Name"\nstring\n"Exported From World UID" string\n"Native Network User" string\n"Last Network User" (could be\nfaked, NET: FROM is safer) string\n"Creature Name" string\n"Gender" integer\n"Genus" integer\n"Variant"\ninteger\n"Head Gallery" string (this is calculated on the sending computer, so the file may be\nmissing on the receiving one - try LIMB instead)\n"Pregnancy Status" integer\nIn addition you can add\ncustom fields by setting NAME variables on the Creature before export. Any strings or integers whose\nname begin "Pray Extra " are added as entries to the export file.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Pp][Rr][Aa][Yy])\s*([Ff][Ii][Ll][Ee])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRAY FILE (integer) RESOURCE_NAME (string) RESOURCE_TYPE (integer) DO_INSTALL (integer)\nThis\nperforms the "installation" of one file from the resource files. The resource_type is defined in the\nagent resource guide. If do_install is zero, the command simply checks if the file install should\nsucceed. Return value is 0 for success, 1 for error.'
+      comment: 'This performs the "installation" of one file from the resource files. The resource_type is defined\nin the agent resource guide. If do_install is zero, the command simply checks if the file install\nshould succeed. Return value is 0 for success, 1 for error.'
       set: [rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Pp][Rr][Aa][Yy])\s*([Ii][Mm][Pp][Oo])'
       captures:
@@ -2859,15 +2865,15 @@ contexts:
         2: entity.name.function.caos
       comment: 'This function imports the creature with the requested moniker and chunk type. Returns one of the\nfollowing codes:\n0 - success\n1 - couldn''t reconcile histories so creature was cloned\n2 - moniker\nnot found in PRAY system\n3 - unused error code\n4 - internal / file format error\nSet actually_do_it\nto 1 to try and perform the import, or 0 to perform a query giving just the return value. You can\nuse the query to test if the creature is available, and if the creature would have to be cloned upon\nimporting, and warn the user. The new creature is TARGetted after import. If you set keep file to 1,\nthen the exported file won''t be deleted (moved to the porch). The creature will appear in the same\nplace that it was exported, but as with NEW: CREA, it will be in limbo, and won''t function until\nmoved to a valid place.'
       set: [rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Pp][Rr][Aa][Yy])\s*([Ii][Nn][Jj][Tt])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRAY INJT (integer) RESOURCE_NAME (string) DO_INSTALL (integer) REPORT_VAR (variable)\nThis command\ninjects an agent. The agent must be in the chunk named. If do_install is zero, the command simply\nchecks for the presence of the required scripts and dependencies. If non-zero, it attempts to inject\nthe agent. The report var is a string variable, and is set to the name of the offending script if\nthe injection/check fails.\nReturn is 0 for success, -1 for "Script not found" and if injecting, -2\nfor "Injection failed".\nReturn value -3 indicates that a dependency evaluation failed, and in this\ncase, the report var is the return code from PRAY DEPS'
+      comment: 'This command injects an agent. The agent must be in the chunk named. If do_install is zero, the\ncommand simply checks for the presence of the required scripts and dependencies. If non-zero, it\nattempts to inject the agent. The report var is a string variable, and is set to the name of the\noffending script if the injection/check fails.\nReturn is 0 for success, -1 for "Script not found"\nand if injecting, -2 for "Injection failed".\nReturn value -3 indicates that a dependency evaluation\nfailed, and in this case, the report var is the return code from PRAY DEPS'
       set: [lvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Pp][Rr][Aa][Yy])\s*([Mm][Aa][Kk][Ee])'
       captures:
@@ -2875,23 +2881,23 @@ contexts:
         2: entity.name.function.caos
       comment: 'Please see the documentation accompanying the praybuilder on CDN\nSuffice it to say: return value is\nzero for success, otherwise non-zero, and report is set to the praybuilder output for you\nAlso, the\nwhich_journal_spot is zero for world journal, 1 for global journal. Also the which_pray_spot is zero\nfor "My Agents" and 1 for "My Creatures"'
       set: [lvalue,rvalue,rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Pp][Rr][Aa][Yy])\s*([Nn][Ee][Xx][Tt])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRAY NEXT (string) RESOURCE_TYPE (string) LAST_KNOWN (string)\nThis returns the name of the resource\nchunk directly after the named one, given that they are of the same type. It loops when it reaches\nthe end. If the named resource cannot be found in the list of resources of the type specified, then\nthe last resource of that type is returned. This call pairs with PRAY PREV. Compare PRAY FORE.'
+      comment: 'This returns the name of the resource chunk directly after the named one, given that they are of\nthe same type. It loops when it reaches the end. If the named resource cannot be found in the list\nof resources of the type specified, then the last resource of that type is returned. This call pairs\nwith PRAY PREV. Compare PRAY FORE.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '([Pp][Rr][Aa][Yy])\s*([Pp][Rr][Ee][Vv])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRAY PREV (string) RESOURCE_TYPE (string) LAST_KNOWN (string)\nThis returns the name of the resource\nchunk directly before the named one, given that they are of the same type. It loops when it reaches\nthe end. If the named resource cannot be found in the list of resources of the type specified, then\nthe first resource of that type is returned. This call pairs with PRAY NEXT. Compare PRAY BACK.'
+      comment: 'This returns the name of the resource chunk directly before the named one, given that they are of\nthe same type. It loops when it reaches the end. If the named resource cannot be found in the list\nof resources of the type specified, then the first resource of that type is returned. This call\npairs with PRAY NEXT. Compare PRAY BACK.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '([Pp][Rr][Aa][Yy])\s*([Ss][Ii][Zz][Ee])'
       captures:
@@ -2899,7 +2905,7 @@ contexts:
         2: entity.name.function.caos
       comment: 'The return value for this is the size of the chunk. This can be used to determine chunk information\nfor decisions on time criteria. E.g. a large compressed chunk will take a short while to\ndecompress.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Pp][Rr][Aa][Yy])\s*([Tt][Ee][Ss][Tt])'
       captures:
@@ -2907,477 +2913,477 @@ contexts:
         2: entity.name.function.caos
       comment: 'This checks for the existence of a chunk, returning zero if it is not found, and a value from 1-3\nindicating the cost to load if it is.\nReturn values are currently defined as:\n0 - Chunk not\navailable at this time\n1 - Chunk Available, Cached and ready for use\n2 - Chunk available, on disk\nuncompressed and fine for loading\n3 - Chunk available, on disk compressed and ready for\nloading.\nThus the return value could be thought of as the cost of loading, where 1 is no cost, and 3\nis high cost.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Pp][Rr][Oo][Pp])\b)'
       comment: 'Returns the value of a CA in a room.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '([Pp][Rr][Tt][:])\s*([Ff][Rr][Mm][Aa])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRT: FRMA (agent) INPUTPORT (integer)\nReturns the agent from which the input port is fed. Returns\nNULLHANDLE if that port does not exist, or is not connected.'
+      comment: 'Returns the agent from which the input port is fed. Returns NULLHANDLE if that port does not exist,\nor is not connected.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '([Pp][Rr][Tt][:])\s*([Ff][Rr][Oo][Mm])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRT: FROM (integer) INPUTPORT (integer)\nReturns the output port index on the source agent, feeding\nthat input port on the TARG agent.\nReturn values are -ve for error.'
+      comment: 'Returns the output port index on the source agent, feeding that input port on the TARG\nagent.\nReturn values are -ve for error.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Pp][Rr][Tt][:])\s*([Ii][Tt][Oo][Tt])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRT: ITOT (integer)\nReturns the number of input ports, assuming they are indexed sequentially.'
+      comment: 'Returns the number of input ports, assuming they are indexed sequentially.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Pp][Rr][Tt][:])\s*([Nn][Aa][Mm][Ee])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRT: NAME (string) AGENT (agent) IN_OR_OUT (integer) PORT_INDEX (integer)\nReturns the name of the\nindexed port (input port if in_or_out is zero, output port if non-zero) on the specified agent.\nReturns "" in error.'
+      comment: 'Returns the name of the indexed port (input port if in_or_out is zero, output port if non-zero) on\nthe specified agent. Returns "" in error.'
       set: [rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '([Pp][Rr][Tt][:])\s*([Oo][Tt][Oo][Tt])'
       captures:
         1: entity.name.function.caos.prefix
         2: entity.name.function.caos
-      comment: 'PRT: OTOT (integer)\nReturns the number of output ports, assuming they are indexed sequentially.'
+      comment: 'Returns the number of output ports, assuming they are indexed sequentially.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Pp][Ss][Ww][Dd])\b)'
       comment: 'Returns the password for the specified world. If the world is not password protected the return\nvalue will be an empty string.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Pp][Tt][Xx][Tt])\b)'
       comment: 'Returns the string of the current text part. See the PTXT command for more information.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Pp][Uu][Hh][Ll])\b)'
       comment: 'Returns the x or y coordinate of the handle that target is picked up by for the given pose. x_or_y\nis 1 for x, 2 for y.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Pp][Uu][Pp][Tt])\b)'
       comment: 'Returns the x or y coordinate of the place where target picks agents up for the given pose. x_or_y\nis 1 for x, 2 for y.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Pp][Uu][Rr][Ee])\b)'
       comment: 'Returns whether default pointer behaviour is disabled or enabled. 1 if enabled, 0 if disabled.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Rr][Aa][Cc][Ee])\b)'
       comment: 'Returns the time in milliseconds which the last tick took overall. This differs from PACE in that\non fast machines it will have a minimum of 50 milliseconds. It accounts for all the time in the\ntick, including event handling and window processing.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Rr][Aa][Nn][Dd])\b)'
       comment: 'Returns a random integer between value1 and value2 inclusive of both values. You can use negative\nvalues, and have them either way round.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Rr][Aa][Tt][Ee])\b)'
       comment: 'Returns a string containing gain, loss and diffusion rates for that combination of room type and\nCA.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Rr][Ee][Aa][Dd])\b)'
       comment: 'Returns a string from the catalogue. This is used for localisation. offset 0 is the first string\nafter the TAG command in the catalogue file. See also REAN and WILD.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Rr][Ee][Aa][Nn])\b)'
       comment: 'Returns the number of entries in the catalogue for the given tag. For the same tag, you can READ\nvalues from 0 to one less than REAN returns.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Rr][Ee][Aa][Qq])\b)'
       comment: 'Returns 1 if the catalogue tag is present, 0 if not.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Rr][Ee][Ll][Xx])\b)'
       comment: 'Returns the relative X distance of the centre point of the second agent from the centre point of\nthe first.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Rr][Ee][Ll][Yy])\b)'
       comment: 'Returns the relative Y distance of the centre point of the second agent from the centre point of\nthe first.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Rr][Gg][Hh][Tt])\b)'
       comment: 'Returns the value of the right constant.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Rr][Ll][Oo][Cc])\b)'
-      comment: 'Returns the location of the specified room as a string formated as follows: xLeft xRight\nyLeftCeiling yRightCeiling yLeftFloor yRightFloor.'
+      comment: 'Returns the location of the specified room as a string formatted as follows: xLeft xRight\nyLeftCeiling yRightCeiling yLeftFloor yRightFloor.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Rr][Mm][Ss][Cc])\b)'
       comment: 'Returns the name of the music track played at the room in the given location.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Rr][Nn][Gg][Ee])\b)'
       comment: 'Returns the target''s range. See ESEE, OBST.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Rr][Oo][Oo][Mm])\b)'
       comment: 'Returns the id of the room containing the midpoint of the specified agent.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Rr][Tt][Ii][Ff])\b)'
       comment: 'Takes a real world time, as returned by RTIM or HIST RTIM and converts it to a localised string for\ndisplay. The format string is made up of any text, with the following special codes:\n%a -\nAbbreviated weekday name\n%A - Full weekday name\n%b - Abbreviated month name\n%B - Full month name\n%c\n- Date and time representation appropriate for locale\n%d - Day of month as decimal number (01 -\n31)\n%H - Hour in 24-hour format (00 - 23)\n%I - Hour in 12-hour format (01 - 12)\n%j - Day of year as\ndecimal number (001 - 366)\n%m - Month as decimal number (01 - 12)\n%M - Minute as decimal number (00\n- 59)\n%p - Current locale’s AM/PM indicator for 12-hour clock\n%S - Second as decimal number (00 -\n59)\n%U - Week of year as decimal number, with Sunday as first day of week (00 - 53)\n%w - Weekday as\ndecimal number (0 - 6; Sunday is 0)\n%W - Week of year as decimal number, with Monday as first day of\nweek (00 - 53)\n%x - Date representation for current locale\n%X - Time representation for current\nlocale\n%y - Year without century, as decimal number (00 - 99)\n%Y - Year with century, as decimal\nnumber\n%z, %Z - Time-zone name or abbreviation; no characters if time zone is unknown\n%% - Percent\nsign\nThe # flag may prefix any formatting code, having the following meanings:\n%#a, %#A, %#b, %#B,\n%#p, %#X, %#z, %#Z, %#% # flag is ignored.\n%#c Long date and time representation, appropriate for\ncurrent locale. For example: Tuesday, March 14, 1995, 12:41:29.\n%#x Long date representation,\nappropriate to current locale. For example: Tuesday, March 14, 1995.\n%#d, %#H, %#I, %#j, %#m, %#M,\n%#S, %#U, %#w, %#W, %#y, %#Y Remove leading zeros (if any).\nYou probably want to READ any formatted\nstring you use from a catalogue file.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Rr][Tt][Ii][Mm])\b)'
       comment: 'Returns the current real world time. This is measured in seconds since midnight, 1 January 1970 in\nUTC. To display, use RTIF.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Rr][Tt][Yy][Pp])\b)'
       comment: 'Returns the type of a room, or -1 if not a valid room id.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ss][Cc][Oo][Ll])\b)'
       comment: 'Set an AND and an EOR mask, to control the following scrolling functions:\n1 - Screen edge nudgy\nscrolling\n2 - Keyboard scrolling\n4 - Middle mouse button screen dragging\n8 - Mouse wheel screen\nscrolling\nThe byte strings is used for nudgy and keyboard scrolling. The defaults are [1 2 4 8 16 32\n64] and [0 1 2 4 8 16 32]. They represent the number of pixels scrolled each consecutive tick, as\nthe scrolling gets slower and faster.\nIf you use [] for a byte string, then the string won''t be\nchanged at all.'
       set: [rvalue,rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ss][Ee][Aa][Nn])\b)'
       comment: 'Returns the season Number: 0..3. (Spring, Summer, Autumn,\nWinter)\n\t0=Spring\n\t1=SUmmer\n\t2=Autumn\n\t3=Winter'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ss][Ee][Ee][Ee])\b)'
       comment: 'Returns 1 if the first agent can see the second, or 0 if it can''t. See ESEE.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ss][Hh][Oo][Ww])\b)'
       comment: 'Returns true if the TARG is currently on visible, false otherwise.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Ss][Ii][Nn][_])'
       comment: 'Returns sine of theta. Theta should be in degrees.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Ss][Nn][Aa][Xx])\b)'
       comment: 'Returns 1 if the specified image file exists, or 0 if it doesn''t. Use with SNAP to find a unique\nfilename to use.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ss][Oo][Rr][Cc])\b)'
       comment: 'Returns the source code for the specified script. Use the GIDS commands to find available scripts.'
       set: [rvalue,rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Ss][Oo][Rr][Qq])\b)'
       comment: 'Returns 1 if the script is in the scriptorium, or if there is a general event script for the entire\ngenus, or family. Returns 0 if there is no matching script.'
       set: [rvalue,rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ss][Pp][Cc][Ss])\b)'
       comment: 'Returns the object’s species'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ss][Qq][Rr][Tt])\b)'
       comment: 'Calculates a square root.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Ss][Tt][Oo][Ff])\b)'
       comment: 'Converts a string in decimal to a floating point number. Characters in the string after an initial\nnumber are quietly ignored. If there is no obvious number then zero is returned.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Ss][Tt][Oo][Ii])\b)'
       comment: 'Converts a string in decimal to an integer. Characters in the string after an initial number are\nquietly ignored. If there is no obvious number then zero is returned.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ss][Tt][Rr][Ll])\b)'
       comment: 'Returns the length of a string.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ss][Uu][Bb][Ss])\b)'
       comment: 'Slices up a string, returning the substring starting at position start, with length count. String\nindices begin at 1.'
       set: [rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Tt][Aa][Cc][Kk])\b)'
       comment: 'Returns the agent currently being DBG: TACKed.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Tt][Aa][Gg][Ee])\b)'
       comment: 'Returns the age in ticks since the target creature was BORN. Ticking stops when the creature dies -\nsee DEAD.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '([Tt][Aa][Nn][_])'
       comment: 'Returns tangent of theta. Theta should be in degrees. Watch out for those nasty discontinuities at\n90 and 270.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Tt][Aa][Rr][Gg])\b)'
       comment: 'the current object of script focus.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Tt][Ii][Cc][Kk])\b)'
       comment: 'Gets ticks left in current timer.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Tt][Ii][Mm][Ee])\b)'
       comment: 'Returns the time of day. This can be\n0 - dawn\n1 - morning\n2 - afternoon\n3 - evening\n4 - night\nThe\nGAME variable engine_LengthOfDayInMinutes sets the day length. See also HIST TIME.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Tt][Mm][Vv][Bb])\b)'
       comment: 'Similar to TMVT only tests a MVBY.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Tt][Mm][Vv][Ff])\b)'
       comment: 'Test if a creature could move it''s down foot to position x,y.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Tt][Mm][Vv][Tt])\b)'
       comment: 'Test if target can move to the given location and still lie validly within the room system. Returns\n1 if it can, 0 if it can''t.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Tt][Oo][Rr][Xx])\b)'
       comment: 'Returns relative X position of the centre of the given room from target''s top left corner.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Tt][Oo][Rr][Yy])\b)'
       comment: 'Returns relative Y position of the centre of the given room from target''s top left corner.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Tt][Oo][Tt][Ll])\b)'
       comment: 'Returns the number of objects in the world who fit this specifier'
       set: [rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Tt][Oo][Uu][Cc])\b)'
       comment: 'Returns 1 if these two objects are in contact.\n@example: #{doif touc targ ownr gt 0} - DOIF [TARG]\nand [OWNR] are touching'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Tt][Rr][Aa][Nn])\b)'
       comment: 'Returns true if the given x y position coincides with a non transparent pixel on the TARG agent.\nThis does not work for creatures.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Tt][Rr][Aa][Nn])\b)'
       comment: 'The currently selected character code translator will translates the given key code to a\ncharacter.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Tt][Rr][Cc][Kk])\b)'
       comment: 'Returns the agent being tracked by the camera, if any.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Tt][Ww][Ii][Nn])\b)'
       comment: 'Clones an agent, and returns the replica. If agent_null is set to 1 the agents that this agent\npoints to (in OVxx, or VAxx in its running script) are set to NULL in the clone. If agent_null is 0,\nthen the clone points to the same agents as the original. When using agent_null 1, you might want to\ncall STPT first so variables being used mid-script aren''t cleared under the agent''s nose.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.agent
 
     - match: '(\b([Tt][Yy][Pp][Ee])\b)'
       comment: 'Determines the type of a variable. The type is one of the following:\n0 - integer\n1 -\nfloating-point\n2 - string\n3 - simple agent\n4 - pointer agent\n5 - compound agent\n6 - vehicle\n7 -\ncreature\nERROR codes for agents:\n-1 - NULL agent handle\n-2 - Unknown agent - you should never get\nthis'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Uu][Ff][Tt][Xx])\b)'
       comment: 'Returns X coordinate of creature''s up foot.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Uu][Ff][Tt][Yy])\b)'
       comment: 'Returns Y coordinate of creature''s up foot.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.float
 
     - match: '(\b([Uu][Nn][Cc][Ss])\b)'
       comment: 'Returns 1 if the creature is unconscious, 0 otherwise.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Uu][Nn][Ii][Dd])\b)'
       comment: 'Returns unique identifier for target agent. AGNT goes the opposite way. NOTE: This should only be\nused for external programs to persistently refer to an agent. Variables can use SETA to store agent\nr-values directly for internal use.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Vv][Aa][0-9][0-9])\b)'
       comment: 'VA00 to VA99 are local variables, whose values are lost when the current script ends.\n@range(0 to\n99)'
-      scope: variable.parameter.caos.vaxx
+      scope: variable.other.member.caos
       pop: true
 
     - match: '(\b([Vv][Ee][Ll][Xx])\b)'
       comment: 'Horizontal velocity in pixels per tick - floating point.'
-      scope: variable.parameter.caos.velx
       pop: true
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Vv][Ee][Ll][Yy])\b)'
       comment: 'Vertical velocity in pixels per tick - floating point.'
-      scope: variable.parameter.caos.vely
       pop: true
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Vv][Ii][Ss][Ii])\b)'
       comment: 'Checks if the agent, or any of its parts, is on screen and returns 1 if it is or 0 if it is not.\nSet to 0 to check if the agent is on the main camera. Set to 1 to check if the agent is on the main\ncamera or any remote cameras'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Vv][Mm][Jj][Rr])\b)'
       comment: 'Returns the major version number of the engine.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Vv][Mm][Nn][Rr])\b)'
       comment: 'Returns the minor version number of the engine.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Vv][Oo][Ii][Ss])\b)'
       comment: 'This returns the voice name for the TARG agent. (Unless it has been serialised in :( In which case\nit returns "Lozenged" if the agent had a voice before the save, or "" as normal if the agent can''t\nspeak.)'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Vv][Tt][Oo][Ss])\b)'
       comment: 'Converts an integer or float into a string in decimal.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Ww][Aa][Ll][Ll])\b)'
       comment: 'WALL last collided with. 0 = left, 1 = right, 2 = up, 3 = down, 4 = unknown.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ww][Dd][Oo][Ww])\b)'
       comment: 'Returns 1 if in full screen mode, or 0 if in windowed mode.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ww][Dd][Tt][Hh])\b)'
       comment: 'Returns objects width'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ww][Ee][Aa][Rr])\b)'
       comment: 'Return the set number of the outfit the norn is wearing on the specified layer or -1 if it is not\nwearing anything'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ww][Ii][Ll][Dd])\b)'
       comment: 'Searches for a catalogue tag based on the given classifier, and returns the string at the given\noffset. See also READ. As an example, with a tag_stub of "Agent Help" and a classifier 3 7 11 it\nwould first look for the tag "Agent Help 3 7 11". If that wasn''t present, it would go through the\nwildcards, eventually trying "Agent Help 0 0 0", and throwing an error if even that isn''t there.'
       set: [rvalue,rvalue,rvalue,rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Ww][Nn][Aa][Mm])\b)'
       comment: 'Returns the name of the currently loaded world.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Ww][Nn][Dd][Bb])\b)'
       comment: 'Returns world coordinates of bottom of current camera window.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ww][Nn][Dd][Hh])\b)'
       comment: 'Returns height of current camera window.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ww][Nn][Dd][Ll])\b)'
       comment: 'Returns world coordinates of left of current camera window.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ww][Nn][Dd][Rr])\b)'
       comment: 'Returns world coordinates of right of current camera window.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ww][Nn][Dd][Tt])\b)'
       comment: 'Returns world coordinates of top of current camera window.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ww][Nn][Dd][Ww])\b)'
       comment: 'Returns width of current camera window.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ww][Nn][Tt][Ii])\b)'
       comment: 'This returns the index of the world. If you pass in a world name which is not within the system, -1\nis returned.'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ww][Oo][Ll][Ff])\b)'
       comment: 'Provides various functions to distort space-time and otherwise help with wolfing runs. Set an AND\nand an EOR mask, to control the following bits:\n1 - Display rendering. Turning it off speeds the\ngame up.\n2 - Fastest ticks. The game usually runs at a maximum of 20 frames per second. If this is\nset, it instead runs as fast as it can.\n4 - Refresh display at end of tick. If set, then the display\nis updated at the end of the tick, and the flag is cleared.\n8 - Autokill. If set, agents which\ngenerate run errors are automatically killed, as the command line option.'
       set: [rvalue,rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ww][Pp][Aa][Uu])\b)'
       comment: 'Returns 1 if world ticks are paused, or 0 otherwise.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ww][Rr][Ll][Dd])\b)'
       comment: 'Returns the name of the world specified by world_index which must be in the range 0 to (NWLD-1).'
       set: [rvalue]
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Ww][Tt][Ii][Kk])\b)'
       comment: 'Returns the number of ticks since the world was first made. For debugging purposes only you can\nchange this value with DBG: WTIK.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Ww][Uu][Ii][Dd])\b)'
       comment: 'Returns the unique identifier of the currently loaded world.\n'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.string.quoted
 
     - match: '(\b([Yy][Ee][Aa][Rr])\b)'
       comment: 'Returns the current year in Albia. Starting with 0000 AD (first chronicled year After Disaster)'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
 
     - match: '(\b([Zz][Oo][Mm][Bb])\b)'
       comment: 'Returns 1 if the creature is zombified (has its brain to motor link severed), 0 otherwise.'
       pop: true
-      scope: entity.name.constant.rvalue.caos
+      scope: variable.function.caos.rvalue.integer
     - match: '\s+'
       scope: text
 
@@ -3401,17 +3407,25 @@ contexts:
   char:
     - meta_scope: constant.character.caos
 
-    - match: '\.'
-      scope: constant.character.escape.caos
+    - match: '(\\.)([''])'
+      pop: true
+      captures:
+        1: constant.character.escape.caos
+        2: punctuation.definition.character.end.caos
 
-    - match: '[^'']'
+    - match: '([^\\''])('')'
+      pop: true
+      captures:
+        1: constant.character.caos
+        2: punctuation.definition.character.end.caos
 
     - match: ''''
       pop: true
+      scope: punctuation.definition.character.end.caos
 
-    - match: '\b..+\b'
+    - match: '[^''][^'']+|\\'
       scope: invalid.illegal.caos
-
+      pop: true
 
   double_quoted_string:
     - meta_scope: string.quoted.double
@@ -3424,6 +3438,7 @@ contexts:
 
     - match: '"'
       pop: true
+      scope: punctuation.definition.string.end.caos
 
 
   eqOp:
