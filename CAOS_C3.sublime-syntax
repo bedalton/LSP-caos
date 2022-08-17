@@ -6,7 +6,7 @@ file_extensions:
 name: 'Creatures 3'
 
 first_line_match: '\*\s*([Cc][Aa]?[Oo][Ss]\s*|[@]?[Vv][Aa][Rr][Ii][Aa][Nn][Tt])(\(\s*[Cc][3]\s*\)|\s*[:]\s*[Cc][3])'
-scope: source.caos
+scope: source.caos.c3
 contexts:
   main:
 

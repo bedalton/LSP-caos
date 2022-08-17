@@ -6,7 +6,7 @@ file_extensions:
 name: 'Sea Monkeys'
 
 first_line_match: '\*\s*([Cc][Aa]?[Oo][Ss]\s*|[@]?[Vv][Aa][Rr][Ii][Aa][Nn][Tt])(\(\s*[Ss][Mm]\s*\)|\s*[:]\s*[Ss][Mm])'
-scope: source.caos
+scope: source.caos.sm
 contexts:
   main:
 

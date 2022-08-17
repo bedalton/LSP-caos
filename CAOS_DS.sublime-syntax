@@ -6,7 +6,7 @@ file_extensions:
 name: 'Docking Station'
 
 first_line_match: '\*\s*([Cc][Aa]?[Oo][Ss]\s*|[@]?[Vv][Aa][Rr][Ii][Aa][Nn][Tt])(\(\s*[Dd][Ss]\s*\)|\s*[:]\s*[Dd][Ss])'
-scope: source.caos
+scope: source.caos.ds
 contexts:
   main:
 
