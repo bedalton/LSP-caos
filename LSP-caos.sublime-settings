@@ -1,0 +1,89 @@
+{
+    // enable this configuration
+    "enabled": true,
+    // the startup command -- what you would type in a terminal
+    "command": ["caos-language-server", "--stdio", "--nolazy", "--inspect=6009"],
+    // the selector that selects which type of buffers this language server attaches to
+    "selector": "source.caos | source.catalogue",
+    "semantic_tokens": {
+        "command": "entity.name.function",
+        "rvalue": "variable.language",
+        "lvalue": "vvariable.parameter",
+        "string": "string",
+        "token": "entity.name.label",
+        "variable": "variable.other.member",
+        "unknown-type": "variable.other",
+        "subroutine-name": "entity.name.label",
+        "dde-pict-token": "meta.generic",
+        "eqOp": "keyword.operator.word",
+        "eqJoin": "keyword.operator.word",
+        "placeholder-text": "constant.other.placeholder",
+        "caos2pray-tag": "entity.name.label",
+        "caos2pray-tag.official": "entity.name.constant",
+        "caos2pray-command": "entity.name.constant",
+    },
+    "settings": {
+        "auto_complete_selector": "text",
+        // The number of spaces to use for continuation indents. i.e. When a newline exists between
+        // arguements in a command
+        "caosScript.formatting.continuationIndent": null,
+        // Whether to enforce the min blank line settings after a comment. If true, it may add a
+        // space between comments and the command that comes after it
+        "caosScript.formatting.forceMinBlankLinesAfterComments": false,
+        // Indent comments inline with commands except when comment is at start of line
+        "caosScript.formatting.indentComments": true,
+        // Allow multiple commands on the same line
+        "caosScript.formatting.keepSameLine": true,
+        // The maximum number of blank lines to keep between commands. Use a negative value for
+        // unlimited spaces
+        "caosScript.formatting.maxBlankLines": -1,
+        // Minimum number of blank lines between commands
+        "caosScript.formatting.minBlankLines": null,
+        // Place a space between the numbers and the brackets in a byte-string. i.e. `[ 1 2 3 ]` vs
+        // `[1 2 3]`
+        "caosScript.formatting.spaceBetweenByteStingBrackets": false,
+        // Shows name of genus in Family Genus Species argument list
+        "caosScript.inlayHints.assumedGenusName": false,
+        // Show value name for known integer and string values
+        "caosScript.inlayHints.assumedValueName": true,
+        // Show parsed family genus species from C1 CLAS value
+        "caosScript.inlayHints.c1ClasValue": true,
+        // Show `DDE: PICT` command dimensions from dimension characters
+        "caosScript.inlayHints.ddePictDimensions": true,
+        // Show Bitflag value on opposing side of equality operator
+        "caosScript.inlayHints.equality.bitFlagValues": true,
+        // Show value name for know integer and string values on opposing side of EQ
+        "caosScript.inlayHints.equality.equalityValueName": true,
+        // Show event script name for known event numbers
+        "caosScript.inlayHints.eventScriptName": true,
+        // Show inlay hints for bitflag values
+        "caosScript.inlayHints.parameterBitFlagValues": true,
+        // Hide inlay hints for commands pwith less than this number of parameters
+        "caosScript.inlayHints.parameterHints.minimumParameterCountForParameterInlayHints": 2,
+        // Show parameter names before arguments
+        "caosScript.inlayHints.parameterHints.showParameterHints": false,
+        // Show return type for rvalue commands
+        "caosScript.inlayHints.rvalueReturnValue": false,
+        // Show parameter names before arguments
+        "caosScript.inlayHints.setvParameterHints": false,
+        // The maximum number of errors to report
+        "caosScript.maxNumberOfProblems": 100,
+        // The CAOS language variant to use
+        // possible values: "C1", "C2", "CV", "C3", "DS"
+        "caosScript.variant": "DS",
+        // The maximum number of blank lines to keep between commands. Use a negative value for
+        // unlimited spaces
+        "creaturesCatalogue.formatting.blankLinesBetweenEntries": -1,
+        // Number of blank lines between values
+        "creaturesCatalogue.formatting.blankLinesBetweenValues": null,
+        // Ensure file ends with newline
+        "creaturesCatalogue.formatting.insertFinalNewline": null,
+        // Newline Character
+        // possible values: "\r\n", "\n"
+        "creaturesCatalogue.formatting.newlineChar": "\n",
+        // Trim all newline characters from enddsa
+        "creaturesCatalogue.formatting.trimFinalNewline": null,
+        // The maximum number of errors to report
+        "creaturesCatalogue.maxNumberOfProblems": 100,
+    }
+}

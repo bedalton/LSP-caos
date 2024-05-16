@@ -1,0 +1,231 @@
+{
+  "contributions": {
+    "settings": [
+      {
+        "file_patterns": [
+          "/LSP-caos.sublime-settings"
+        ],
+        "schema": {
+          "$id": "sublime://settings/LSP-caos",
+          "allOf": [
+            {
+              "$ref": "sublime://settings/LSP-plugin-base"
+            },
+            {
+              "$ref": "sublime://settings/LSP-caos#/definitions/PluginConfig"
+            }
+          ],
+          "definitions": {
+            "PluginConfig": {
+              "properties": {
+                "settings": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "caosScript.formatting.continuationIndent": {
+                      "default": null,
+                      "description": "The number of spaces to use for continuation indents. i.e. When a newline exists between arguements in a command",
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    },
+                    "caosScript.formatting.forceMinBlankLinesAfterComments": {
+                      "default": false,
+                      "description": "Whether to enforce the min blank line settings after a comment. If true, it may add a space between comments and the command that comes after it",
+                      "type": "boolean"
+                    },
+                    "caosScript.formatting.indentComments": {
+                      "default": true,
+                      "description": "Indent comments inline with commands except when comment is at start of line",
+                      "type": "boolean"
+                    },
+                    "caosScript.formatting.keepSameLine": {
+                      "default": true,
+                      "description": "Allow multiple commands on the same line",
+                      "type": "boolean"
+                    },
+                    "caosScript.formatting.maxBlankLines": {
+                      "default": -1,
+                      "description": "The maximum number of blank lines to keep between commands. Use a negative value for unlimited spaces",
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    },
+                    "caosScript.formatting.minBlankLines": {
+                      "default": null,
+                      "description": "Minimum number of blank lines between commands",
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    },
+                    "caosScript.formatting.spaceBetweenByteStingBrackets": {
+                      "default": false,
+                      "description": "Place a space between the numbers and the brackets in a byte-string. i.e. `[ 1 2 3 ]` vs `[1 2 3]`",
+                      "type": "boolean"
+                    },
+                    "caosScript.inlayHints.assumedGenusName": {
+                      "default": false,
+                      "description": "Shows name of genus in Family Genus Species argument list",
+                      "type": "boolean"
+                    },
+                    "caosScript.inlayHints.assumedValueName": {
+                      "default": true,
+                      "description": "Show value name for known integer and string values",
+                      "type": "boolean"
+                    },
+                    "caosScript.inlayHints.c1ClasValue": {
+                      "default": true,
+                      "description": "Show parsed family genus species from C1 CLAS value",
+                      "type": "boolean"
+                    },
+                    "caosScript.inlayHints.ddePictDimensions": {
+                      "default": true,
+                      "description": "Show `DDE: PICT` command dimensions from dimension characters",
+                      "type": "boolean"
+                    },
+                    "caosScript.inlayHints.equality.bitFlagValues": {
+                      "default": true,
+                      "description": "Show Bitflag value on opposing side of equality operator",
+                      "type": "boolean"
+                    },
+                    "caosScript.inlayHints.equality.equalityValueName": {
+                      "default": true,
+                      "description": "Show value name for know integer and string values on opposing side of EQ",
+                      "type": "boolean"
+                    },
+                    "caosScript.inlayHints.eventScriptName": {
+                      "default": true,
+                      "description": "Show event script name for known event numbers",
+                      "type": "boolean"
+                    },
+                    "caosScript.inlayHints.parameterBitFlagValues": {
+                      "default": true,
+                      "description": "Show inlay hints for bitflag values",
+                      "type": "boolean"
+                    },
+                    "caosScript.inlayHints.parameterHints.minimumParameterCountForParameterInlayHints": {
+                      "default": 2,
+                      "description": "Hide inlay hints for commands pwith less than this number of parameters",
+                      "type": "integer"
+                    },
+                    "caosScript.inlayHints.parameterHints.showParameterHints": {
+                      "default": false,
+                      "description": "Show parameter names before arguments",
+                      "type": "boolean"
+                    },
+                    "caosScript.inlayHints.rvalueReturnValue": {
+                      "default": false,
+                      "description": "Show return type for rvalue commands",
+                      "type": "boolean"
+                    },
+                    "caosScript.inlayHints.setvParameterHints": {
+                      "default": false,
+                      "description": "Show parameter names before arguments",
+                      "type": "boolean"
+                    },
+                    "caosScript.maxNumberOfProblems": {
+                      "default": 100,
+                      "description": "The maximum number of errors to report",
+                      "type": "number"
+                    },
+                    "caosScript.variant": {
+                      "default": "DS",
+                      "description": "The CAOS language variant to use",
+                      "enum": [
+                        "C1",
+                        "C2",
+                        "CV",
+                        "C3",
+                        "DS"
+                      ],
+                      "enumDescriptions": [
+                        "Creatures 1",
+                        "Creatures 2",
+                        "Creatures Village",
+                        "Creatures 3",
+                        "Docking Station"
+                      ],
+                      "type": "string"
+                    },
+                    "creaturesCatalogue.formatting.blankLinesBetweenEntries": {
+                      "default": -1,
+                      "description": "The maximum number of blank lines to keep between commands. Use a negative value for unlimited spaces",
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    },
+                    "creaturesCatalogue.formatting.blankLinesBetweenValues": {
+                      "default": null,
+                      "description": "Number of blank lines between values",
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    },
+                    "creaturesCatalogue.formatting.insertFinalNewline": {
+                      "default": null,
+                      "description": "Ensure file ends with newline",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "creaturesCatalogue.formatting.newlineChar": {
+                      "default": "\n",
+                      "description": "Newline Character",
+                      "enum": [
+                        "\n",
+                        "\r\n"
+                      ],
+                      "enumDescriptions": [
+                        "LF",
+                        "CRLF"
+                      ],
+                      "type": "string"
+                    },
+                    "creaturesCatalogue.formatting.trimFinalNewline": {
+                      "default": null,
+                      "description": "Trim all newline characters from end",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "creaturesCatalogue.maxNumberOfProblems": {
+                      "default": 100,
+                      "description": "The maximum number of errors to report",
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "file_patterns": [
+          "/*.sublime-project"
+        ],
+        "schema": {
+          "properties": {
+            "settings": {
+              "properties": {
+                "LSP": {
+                  "properties": {
+                    "LSP-caos": {
+                      "$ref": "sublime://settings/LSP-caos#/definitions/PluginConfig"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}
