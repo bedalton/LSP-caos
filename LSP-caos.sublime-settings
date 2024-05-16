@@ -2,7 +2,7 @@
     // enable this configuration
     "enabled": true,
     // the startup command -- what you would type in a terminal
-    "command": ["caos-language-server", "--stdio", "--nolazy", "--inspect=6009"],
+    "command": ["${node_bin}", "${server_path}", "--stdio", "--nolazy", "--inspect=6009"],
     // the selector that selects which type of buffers this language server attaches to
     "selector": "source.caos | source.catalogue",
     "semantic_tokens": {
