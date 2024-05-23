@@ -1,0 +1,451 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+file_extensions:
+  - cos
+
+name: 'CAOS'
+
+scope: source.caos
+contexts:
+  main:
+
+    - match: '^\s*\*#'
+      scope: meta.preprocessor.caos
+      set: caos2comment
+
+    - match: '\s*\*.*$'
+      scope: comment.line.caos
+
+    # Strings begin and end with quotes, and use backslashes as an escape
+    # character
+    - match: '"'
+      scope: punctuation.definition.string.begin.caos
+      set: double_quoted_string
+
+    - match: ''''
+      scope: constant.character.caos
+      set: char
+
+    - match: '\['
+      scope: punctuation.definition.string.begin.caos
+      set: bracket_string
+
+    - match: '([a-zA-Z_\-0-9]+):([a-zA-Z0-9_\-]+)'
+      scope: constant.other.placeholder.caos
+      captures:
+        1: constant.other.placeholder.name.caos
+        2: constant.other.placeholder.type.caos
+
+    - match: '(?i)\b(doif)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(econ)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(elif)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(else)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(endi)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(endm)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(enum)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(epas)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(escn)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(esee)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(etch)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(ever)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(iscr)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(loop)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(next)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(nscn)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(repe)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(reps)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(retn)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(rscr)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(scrp)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(subr)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(subr)\b'
+      scope: keyword.control
+
+    - match: '(?i)\b(untl)\b'
+      scope: keyword.control
+
+    # Number indexed variables
+    - match: '(?i)\b(var\d)\b'
+      scope: variable.other.member.ovxx.caos
+
+    - match: '(?i)\b(va\d{2})\b'
+      scope: variable.other.member.ovxx.caos
+
+    - match: '(?i)\b(ovb\d)\b'
+      scope: variable.other.member.ovxx.caos
+
+    - match: '(?i)\b(ov\d{2})\b'
+      scope: variable.other.member.ovxx.caos
+
+    - match: '(?i)\b(mv\d{2})\b'
+      scope: variable.other.member.mvxx.caos
+
+    # Named variables
+    - match: '(?i)\b(game)\b'
+      scope: variable.language.game.caos
+
+    - match: '(?i)\b(eame)\b'
+      scope: variable.language.game.caos
+
+    - match: '(?i)\b(name)\b'
+      scope: variable.other.member.name.caos
+
+    - match: '(?i)\b(mame)\b'
+      scope: variable.other.member.mame.caos
+
+    - match: '(?i)\b(avar)\b'
+      scope: variable.other.member.avar.caos
+
+    # Other variables
+
+    - match: '(?i)\b(_p[12]_)\b'
+      scope: variable.other.member.caos
+
+     # Numbers
+    - match: '[-+]?[0-9]*\.[0-9]+'
+      scope: constant.numeric.float.caos
+
+    - match: '\b[-+]?[0-9]+\b'
+      scope: constant.numeric.integer.caos
+
+    - match: '%[01]+'
+      scope: constant.numeric.integer.binary.caos
+
+    - match: '\s+'
+      scope: text
+
+    - match: ','
+      scope: punctuation.terminator.caos
+
+    - match: '[a-zA-Z0-9$#!:_+]{4}'
+      scope: entity.name.function.caos
+
+    - match: '\b([Ss][Uu][Bb][Rr]|[Gg][Ss][Uu][Bb])\b'
+      set: [token]
+
+    - match: '\b([Aa][Nn][Dd]|[Oo][Rr])\b'
+      scope: keyword.operator.word.caos
+
+    - match: '\b[Ee][Qq]\b|='
+      scope:  keyword.control.conditional.caos
+
+    - match: '\b[Nn][Ee]\b|!=|<>'
+      scope:  keyword.control.conditional.caos
+
+    - match: '\b[Gg][Ee]\b|>='
+      scope:  keyword.control.conditional.caos
+
+    - match: '\b[Gg][Tt]\b|>'
+      scope:  keyword.control.conditional.caos
+
+    - match: '\b[Ll][Ee]\b|<='
+      scope:  keyword.control.conditional.caos
+
+    - match: '\b[Ll][Tt]\b|<'
+      scope:  keyword.control.conditional.caos
+
+    - match: '\b[Bb][Tt]\b'
+      scope:  keyword.control.conditional.caos
+
+    - match: '\b[Bb][Ff]\b'
+      scope:  keyword.control.conditional.caos
+
+
+    - match: '\b([^ ]+)\b'
+      scope: invalid.illegal.caos
+
+
+  token:
+    - match: '\s*\*.*$'
+      scope: comment.line.caos
+
+    - match: '\b([^"'']+)\b'
+      scope: entity.name.function.caos
+      pop: true
+
+    - match: '(\"(^\"|\")*\"|''([^'']|\\'')*'')'
+      scope: invalid.illegal.caos
+      pop: true
+
+  char:
+    - meta_scope: constant.character.caos
+
+    - match: '(\\.)([''])'
+      pop: true
+      captures:
+        1: constant.character.escape.caos
+        2: punctuation.definition.character.end.caos
+
+    - match: '([^\\''])('')'
+      pop: true
+      captures:
+        1: constant.character.caos
+        2: punctuation.definition.character.end.caos
+
+    - match: ''''
+      pop: true
+      scope: punctuation.definition.character.end.caos
+
+    - match: '[^''][^'']+|\\'
+      scope: invalid.illegal.caos
+      pop: true
+
+  double_quoted_string:
+    - meta_scope: string.quoted.double.caos
+
+
+    - match: '(\\.|[^"])+\n'
+      pop: true
+      scope: invalid.illegal.caos
+
+    - match: '\\.'
+      scope: constant.character.escape.caos
+
+    - match: '[^"]'
+      scope: string.quoted.double.caos
+
+    - match: '"'
+      pop: true
+      scope: punctuation.definition.string.end.caos
+
+
+
+  single_quoted_string:
+
+    - meta_scope: string.quoted.single.caos
+
+    - match: '\\.'
+      scope: constant.character.escape.caos
+
+    - match: '[^'']'
+      scope: string.quoted.single.caos
+
+    - match: ''''
+      pop: true
+      scope: punctuation.definition.string.end.caos
+
+  caos2comment:
+    - meta_scope: meta.preprocessor.caos
+
+    - match: '(?i)(C[123V]|DS|[A-Za-z0-9_]{4})-Name'
+      scope: keyword.control.command.agent-name.caos
+      set: caos2value
+
+    - match: '\s*(Agent Type|Agent Sprite First Image|Agent Bioenergy Value|Camera X|Camera Y|Dependency Count|Script Count)\s*(=)'
+      scope: 'text'
+      captures:
+        1: keyword.control.official_tag.caos
+        2: punctuation.separator.caos
+      set: int_next
+
+
+    - match: '\s*(Agent Animation File|Agent Animation Gallery|Agent Animation String|Web Label|Web URL|Web Icon|Web Icon Base|Web Icon Animation String|Agent Description|Agent Description-es|Agent Description-fr|Agent Description-it|Agent Description-de|Agent Description-nl|Remove script)\s*(=)'
+      scope: 'text'
+      captures:
+        1: keyword.control.official_tag.caos
+        2: punctuation.separator.caos
+      set: string_next
+
+    - match: '(?i)\s*((anim (img|image|file))|desc|anim)\s*(=)'
+      scope: 'text'
+      captures:
+        1: keyword.control.friendly_tag.caos
+        2: punctuation.separator.caos
+      set: string_next
+
+    - match: '(?i)\s*(anim start|first_image|bioenergy)\s*(=)'
+      scope: 'text'
+      captures:
+        1: keyword.control.friendly_tag.caos
+        2: punctuation.separator.caos
+      set: int_next
+
+
+    - match: '\s*([^=]+)\s*(=)'
+      scope: text
+      captures:
+        1: keyword.control.unofficial_tag.caos
+        2: punctuation.separator.caos
+      set: caos2values
+
+    - match: '(?i)(LINK|DEPEND|ATTACH|INLINE|RSCR|Pray-?File|Cob-?File)'
+      scope: keyword.control.command.caos
+      set: caos2values
+
+    - match: '\b[^\s]+\b'
+      scope: invalid.illegal.caos
+
+    - match: '\n'
+      scope: text
+      pop: true
+
+  caos2value:
+
+    - match: '"'
+      scope: punctuation.definition.string.begin.caos
+      set: double_quoted_string
+      pop: true
+
+    # Strings begin and end with quotes, and use backslashes as an escape
+    # character
+    - match: ''''
+      scope: punctuation.definition.string.begin.caos
+      set: single_quoted_string
+      pop: true
+
+    - match: ''''
+      scope: punctuation.definition.character.begin.caos
+      set: char
+      pop: true
+
+    - match: '[ \t]+'
+      scope: text
+
+    - match: '\b([^\s])\b'
+      scope: entity.name.constant.caos
+      pop: true
+
+    - match: '.\n'
+      scope: invalid.illegal.caos
+      pop: true
+
+    - match: '\n'
+      scope: text
+      pop: true
+
+
+  caos2values:
+
+    - match: '"'
+      scope: punctuation.definition.string.begin.caos
+      set: double_quoted_string
+
+    # Strings begin and end with quotes, and use backslashes as an escape
+    # character
+    - match: ''''
+      scope: punctuation.definition.string.begin.caos
+      set: single_quoted_string
+
+    - match: ''''
+      scope: punctuation.definition.character.begin.caos
+      set: char
+
+    - match: '[ \t]+'
+      scope: text
+
+    - match: '\b[-+]?[0-9]+\b'
+      scope: constant.numeric.integer.caos
+
+    - match: '\n'
+      scope: text
+      pop: true
+
+    - match: '\b[-+]?[0-9]+\b'
+      scope: constant.numeric.integer.caos
+
+  bracket_string:
+
+    - meta_scope: string.unquoted.caos
+
+    - match: '\b[-+]?[0-9]+\b'
+      scope: keyword.operator.logical.caos'
+
+
+    - match: '([Rr])\s*(\])'
+      pop: true
+      captures:
+        1: keyword.operator.word.caos'
+        2: punctuation.definition.string.end.caos
+
+    - match: '\s+'
+      scope: text
+
+    - match: '[^\]]'
+      scope: string.bracket.caos
+
+
+    - match: ']'
+      scope: punctuation.definition.string.end.caos
+      pop: true
+
+  int_next:
+
+    - match: '\b[-+]?[0-9]+\b'
+      scope: constant.numeric.integer.caos
+      pop: true
+
+    - match: '[ \t]+'
+      scope: text
+
+    - match: '.+\n?'
+      scope: invalid.illegal.caos
+      pop: true
+
+
+  string_next:
+
+    - match: '"'
+      scope: punctuation.definition.string.begin.caos
+      set: double_quoted_string
+
+    # Strings begin and end with quotes, and use backslashes as an escape
+    # character
+    - match: ''''
+      scope: punctuation.definition.string.begin.caos
+      set: single_quoted_string
+
+    - match: ''''
+      scope: punctuation.definition.character.begin.caos
+      set: char
+
+    - match: '[ \t]+'
+      scope: text
+
+    - match: '\n?'
+      scope: text
+      pop: true
