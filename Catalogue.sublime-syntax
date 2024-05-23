@@ -1,0 +1,153 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+file_extensions:
+  - catalogue
+scope: source.creatures-catalogue
+
+contexts:
+  main:
+    # The main context is the initial starting point of our syntax.
+    # Include other contexts from here (or specify them directly).
+    - include: keywords
+    - include: numbers
+    - include: strings
+    - include: comments
+
+  keywords:
+
+    - match: '\b(?i)(ARRAY)\b'
+      scope: keyword.control.kind.array.creatures-catalogue
+      push: header
+
+    - match: '\b(?i)(TAG)\b'
+      scope: keyword.control.kind.tag.creatures-catalogue
+      push: header
+
+
+  header:
+
+    - match: "\n"
+      pop: true
+
+    - match: '\b(?i)(OVERRIDE)\b'
+      scope: keyword.control.override.creatures-catalogue
+      push: header
+
+    - include: tag_name
+
+    - include: numbers
+
+
+  tag_name:
+
+    # Strings begin and end with quotes, and use backslashes as an escape
+    # character.
+    - match: '"'
+      scope: punctuation.definition.string.begin.creatures-catalogue
+      push: inside_double_quote_tag_name
+      pop: true
+
+    - match: ''''
+      scope: punctuation.definition.string.begin.creatures-catalogue
+      push: inside_single_quote_tag_name
+      pop: true
+
+  numbers:
+    - match: '\b-?[0-9]+\b'
+      scope: constant.numeric.creatures-catalogue
+
+    - match: '\b-?[0-9]*\\.[0-9]+\b'
+      scope: constant.numeric.creatures-catalogue
+
+
+  inside_double_quote_string:
+    - meta_scope: string.quoted.double.creatures-catalogue
+
+    - match: '[^"]$\n'
+      scope: invalid.illegal.creatures-catalogue
+      pop: true
+
+    - match: '[^"\n]'
+
+    - match: '\\[^\n]'
+      scope: constant.character.escape.creatures-catalogue
+
+    - match: '"'
+      scope: punctuation.definition.string.end.creatures-catalogue
+      pop: true
+
+
+  inside_single_quote_string:
+    - meta_scope: string.quoted.double.creatures-catalogue
+
+    - match: '\\[^\n]'
+      scope: constant.character.escape.creatures-catalogue
+
+    - match: '[^\n'']'
+
+    - match: ''''
+      scope: punctuation.definition.string.end.creatures-catalogue
+      pop: true
+
+    - match: '[^'']$\n'
+      scope: invalid.illegal.creatures-catalogue
+      pop: true
+
+
+  strings:
+    # Strings begin and end with quotes, and use backslashes as an escape
+    # character.
+    - match: '"'
+      scope: punctuation.definition.string.begin.creatures-catalogue
+      push: inside_double_quote_string
+
+    - match: ''''
+      scope: punctuation.definition.string.begin.creatures-catalogue
+      push: inside_single_quote_string
+
+
+  inside_double_quote_tag_name:
+    - meta_scope: entity.name.class.creatures-catalogue
+
+    - match: '[^"]$\n'
+      scope: invalid.illegal.creatures-catalogue
+      pop: true
+
+    - match: '[^"\n]'
+      scope: constant.character.creatures-catalogue
+
+    - match: '\\[^\n]'
+      scope: constant.character.escape.creatures-catalogue
+
+    - match: '"'
+      scope: punctuation.definition.string.end.creatures-catalogue
+      pop: true
+
+
+  inside_single_quote_tag_name:
+    - meta_scope: entity.name.class.creatures-catalogue
+
+    - match: '\\[^\n]'
+      scope: constant.character.escape.creatures-catalogue
+
+    - match: '[^\n'']'
+      scope: constant.character.creatures-catalogue
+
+    - match: ''''
+      scope: punctuation.definition.string.end.creatures-catalogue
+      pop: true
+
+    - match: '[^'']$\n'
+      scope: invalid.illegal.creatures-catalogue
+      pop: true
+
+  comments:
+    # Comments begin with a '//' and finish at the end of the line.
+    - match: '#'
+      scope: punctuation.definition.comment.creatures-catalogue
+      push:
+        # This is an anonymous context push for brevity.
+        - meta_scope: comment.line.number-sign.creatures-catalogue
+        - match: $\n?
+          pop: true
