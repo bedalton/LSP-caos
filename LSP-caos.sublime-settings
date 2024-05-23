@@ -4,7 +4,12 @@
     // the startup command -- what you would type in a terminal
     "command": ["${node_bin}", "${server_path}", "--stdio", "--nolazy", "--inspect=6009"],
     // the selector that selects which type of buffers this language server attaches to
-    "selector": "source.caos | source.catalogue",
+    "selector": "source.caos | source.creatures-catalogue",
+    "inhibit_word_completions": true,
+    "initializationOptions": {
+        "runner": "sublime"
+    },
+    "schemes": ["file", "buffer", "res"],
     "semantic_tokens": {
         "command": "entity.name.function",
         "rvalue": "variable.language",
@@ -23,7 +28,17 @@
         "caos2pray-command": "entity.name.constant",
     },
     "settings": {
+
         "auto_complete_selector": "text",
+
+        // ================== //
+        // ====== CAOS ======
+        // ================== //
+
+        // The CAOS language variant to use
+        // possible values: "C1", "C2", "CV", "C3", "DS"
+        "caosScript.variant": "DS",
+        
         // The number of spaces to use for continuation indents. i.e. When a newline exists between
         // arguements in a command
         "caosScript.formatting.continuationIndent": null,
@@ -68,9 +83,23 @@
         "caosScript.inlayHints.setvParameterHints": false,
         // The maximum number of errors to report
         "caosScript.maxNumberOfProblems": 100,
-        // The CAOS language variant to use
-        // possible values: "C1", "C2", "CV", "C3", "DS"
-        "caosScript.variant": "DS",
+        // Font style to apply to undeline Official tags
+        // value is space delimited string of [bold, italic, underline] or null
+        "caosScript.theme.caos2pray.official_tags.style": null,
+        // Font style to apply to unofficial, or user defined tags
+        // value is space delimited string of [bold, italic, underline] or null
+        "caosScript.theme.caos2pray.unofficial_tags.style": "italic",
+        // Font style to apply to CAOS2Pray command keywords
+        // value is space delimited string of [bold, italic, underline] or null
+        "caosScript.theme.caos2pray.command.style": null,
+        // Font style to apply to Agent name commands. i.e DS-Name
+        // value is space delimited string of [bold, italic, underline] or null
+        "caosScript.theme.caos2pray.command.agent-name.style": null,
+
+        // ================== //
+        // ==== CATALOGUE === //
+        // ================== //
+
         // The maximum number of blank lines to keep between commands. Use a negative value for
         // unlimited spaces
         "creaturesCatalogue.formatting.blankLinesBetweenEntries": -1,
@@ -85,5 +114,6 @@
         "creaturesCatalogue.formatting.trimFinalNewline": null,
         // The maximum number of errors to report
         "creaturesCatalogue.maxNumberOfProblems": 100,
+
     }
 }
