@@ -149,6 +149,43 @@
                       ],
                       "type": "string"
                     },
+
+                    
+                    "caosScript.theme.caos2pray.official_tags.style": {
+                      "default": null,
+                      "description": "Font style to apply to CAOS2Pray official agent tags\nvalue is space delimited string of [bold, italic, underline] or null",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+
+                    "caosScript.theme.caos2pray.unofficial_tags.style": {
+                      "default": "italic",
+                      "description": "Font style to apply to CAOS2Pray user defined tags\nvalue is space delimited string of [bold, italic, underline] or null",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "caosScript.theme.caos2pray.command.style": {
+                      "default": null,
+                      "description": "Font style to apply to CAOS2Pray command keywords\nvalue is space delimited string of [bold, italic, underline] or null",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "caosScript.theme.caos2pray.command.agent-name.style": {
+                      "default": null,
+                      "description": "Font style to apply to Agent name commands. i.e DS-Name\nvalue is space delimited string of [bold, italic, underline] or null",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+
+
                     "creaturesCatalogue.formatting.blankLinesBetweenEntries": {
                       "default": -1,
                       "description": "The maximum number of blank lines to keep between commands. Use a negative value for unlimited spaces",
