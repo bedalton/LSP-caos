@@ -1,6 +1,6 @@
 {
   "private": true,
   "dependencies": {
-    "caos-language-server": "^0.1.*"
+    "caos-language-server": "*"
   }
 }
