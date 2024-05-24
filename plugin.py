@@ -20,13 +20,19 @@ plugin_path = os.path.join(sublime.packages_path(), "LSP-caos")
 global last_color_scheme
 last_color_scheme = None
 
+
 def get_color_scheme():
     preferences = sublime.load_settings('Preferences.sublime-settings')
+    if preferences is None:
+        return None
     scheme = preferences.get('color_scheme').split(os.path.sep)
+    if scheme is None:
+        return None
     if scheme[-1] == preferences.get('color_scheme'):
         scheme = preferences.get('color_scheme').split('/')
-    filename, fileext = os.path.splitext(scheme[-1]);
+    filename, file_ext = os.path.splitext(scheme[-1])
     return filename
+
 
 def create_color_scheme():
 
@@ -47,7 +53,6 @@ def create_color_scheme():
     scheme_dest_path = os.path.join(plugin_path, scheme_name + os.extsep + "sublime-color-scheme")
 
     settings = sublime.load_settings("LSP-caos.sublime-settings").get("settings")
-
 
     rules = []
 
@@ -93,18 +98,19 @@ def create_color_scheme():
             scheme,
             indent=4
         )
-        with open(scheme_dest_path, "w") as f:
+        with os.open(scheme_dest_path, "w") as f:
             f.write(template_contents)
     elif os.path.exists(scheme_dest_path):
         os.remove(scheme_dest_path)
 
+
 def remove_generated_color_schemes():
 
     global plugin_path
-    colorSchemes = sublime.find_resources('*.sublime-color-scheme')
+    color_schemes = sublime.find_resources('*.sublime-color-scheme')
     current_color_scheme = re.escape(get_color_scheme())
 
-    for colorScheme in colorSchemes:
+    for colorScheme in color_schemes:
 
         is_current_theme = re.match(f"Packages/LSP-caos/({current_color_scheme}\\.sublime-color-scheme)", colorScheme)
 
@@ -118,6 +124,7 @@ def remove_generated_color_schemes():
 
             if os.path.exists(f):
                 os.remove(f)
+
 
 def update_plugin_settings():
     """

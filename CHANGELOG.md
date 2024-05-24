@@ -5,6 +5,9 @@ All notable changes to the "caoseditor" extension will be documented in this fil
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 ## [Unreleased]
+## [0.1.1] - 2024-05-24
+- Fixes
+  - Fixed error when color scheme is not set
 
 ## [0.1.0] - 2024-05-23
 ### Added

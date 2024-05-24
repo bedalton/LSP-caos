@@ -7,6 +7,8 @@ Creature's CAOS and Catalogue editing support for Sublime Text's LSP plugin
 Install the following packages in Sublime Text:
 * [LSP](https://packagecontrol.io/packages/LSP) - Base LSP package
 * [LSP-caos](https://packagecontrol.io/packages/LSP-caos) - This plugin
+* Restart Sublime
+* Set language to CAOS or Catalogue from lower right menu if not automatically set
 
 ## Configuration
 
