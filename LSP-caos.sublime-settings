@@ -76,7 +76,7 @@
         // Hide inlay hints for commands pwith less than this number of parameters
         "caosScript.inlayHints.parameterHints.minimumParameterCountForParameterInlayHints": 2,
         // Show parameter names before arguments
-        "caosScript.inlayHints.parameterHints.showParameterHints": false,
+        "caosScript.inlayHints.parameterHints.showParameterHints": true,
         // Show return type for rvalue commands
         "caosScript.inlayHints.rvalueReturnValue": false,
         // Show parameter names before arguments
