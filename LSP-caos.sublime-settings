@@ -12,7 +12,7 @@
     "semantic_tokens": {
         "command": "entity.name.function",
         "rvalue": "variable.language",
-        "lvalue": "vvariable.parameter",
+        "lvalue": "variable.parameter",
         "string": "string",
         "token": "entity.name.label",
         "variable": "variable.other.member",
@@ -26,6 +26,7 @@
         "caos2pray-tag.official": "entity.name.constant",
         "caos2pray-command": "entity.name.constant",
     },
+    
     "settings": {
 
         "auto_complete_selector": "text",
@@ -39,7 +40,7 @@
         "caosScript.variant": "DS",
         
         // The number of spaces to use for continuation indents. i.e. When a newline exists between
-        // arguements in a command
+        // arguments in a command
         "caosScript.formatting.continuationIndent": null,
         // Whether to enforce the min blank line settings after a comment. If true, it may add a
         // space between comments and the command that comes after it
@@ -72,7 +73,7 @@
         "caosScript.inlayHints.eventScriptName": true,
         // Show inlay hints for bitflag values
         "caosScript.inlayHints.parameterBitFlagValues": true,
-        // Hide inlay hints for commands pwith less than this number of parameters
+        // Hide inlay hints for commands with less than this number of parameters
         "caosScript.inlayHints.parameterHints.minimumParameterCountForParameterInlayHints": 2,
         // Show parameter names before arguments
         "caosScript.inlayHints.parameterHints.showParameterHints": true,
@@ -97,7 +98,7 @@
         // Newline Character
         // possible values: "\r\n", "\n"
         "creaturesCatalogue.formatting.newlineChar": "\n",
-        // Trim all newline characters from enddsa
+        // Trim all newline characters from end of file
         "creaturesCatalogue.formatting.trimFinalNewline": null,
         // The maximum number of errors to report
         "creaturesCatalogue.maxNumberOfProblems": 100,
