@@ -5,6 +5,11 @@ All notable changes to the "caoseditor" extension will be documented in this fil
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 ## [Unreleased]
+
+## [0.1.4]
+- Removals
+  - Removed CAOS config based tag style theme overrides
+
 ## [0.1.1] - 2024-05-24
 - Fixes
   - Fixed error when color scheme is not set
