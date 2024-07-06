@@ -14,13 +14,3 @@ Install the following packages in Sublime Text:
 
 Defaults can be edited by selecting `Preferences: LSP-caos Settings` from the
 command palette.
-
-### Format on save
-
-To format your code on save add the following setting to your syntax-specific settings (Elixir in this case) and/or project files:
-
-```json
-{
-  "lsp_format_on_save": true
-}
-```
