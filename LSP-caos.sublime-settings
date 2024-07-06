@@ -5,7 +5,6 @@
     "command": ["${node_bin}", "${server_path}", "--stdio", "--nolazy", "--inspect=6009"],
     // the selector that selects which type of buffers this language server attaches to
     "selector": "source.caos | source.creatures-catalogue",
-    "inhibit_word_completions": true,
     "initializationOptions": {
         "runner": "sublime"
     },
