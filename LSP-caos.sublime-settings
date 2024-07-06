@@ -39,6 +39,10 @@
         // possible values: "C1", "C2", "CV", "C3", "DS"
         "caosScript.variant": "DS",
         
+        // =========================== //
+        // ==== CAOS: Formatting ====
+        // =========================== //
+
         // The number of spaces to use for continuation indents. i.e. When a newline exists between
         // arguments in a command
         "caosScript.formatting.continuationIndent": null,
@@ -84,9 +88,9 @@
         // The maximum number of errors to report
         "caosScript.maxNumberOfProblems": 100,
 
-        // ================== //
-        // ==== CATALOGUE === //
-        // ================== //
+        // ============================== //
+        // ==== CATALOGUE: Formatting === //
+        // ============================== //
 
         // The maximum number of blank lines to keep between commands. Use a negative value for
         // unlimited spaces
