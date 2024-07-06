@@ -306,7 +306,7 @@ contexts:
       set: int_next
 
 
-    - match: '\s*([^=]+)\s*(=)'
+    - match: '\s*([^=]+?)\s*(=)'
       scope: text
       captures:
         1: keyword.control.unofficial_tag.caos
