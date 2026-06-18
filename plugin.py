@@ -1,31 +1,23 @@
-import sublime
-from lsp_utils import NpmClientHandler
-import os
+from pathlib import Path
+from LSP.plugin import LspPlugin, OnPreStartContext
+from lsp_utils import NodeManager
+from sublime_lib import ResourcePath
 
-def plugin_loaded() -> None:
-    LspCaosPlugin.setup()
+def plugin_loaded():
+    LspCaosPlugin.register()
+
+def plugin_unloaded():
+    LspCaosPlugin.unregister()
 
 
-def plugin_unloaded() -> None:
-    LspCaosPlugin.cleanup()
-
-
-class LspCaosPlugin(NpmClientHandler):
-    package_name = __package__
-    server_directory = "language-server"
-    server_binary_path = os.path.join(
-        server_directory,
-        "node_modules",
-        "caos-language-server",
-        "dist",
-        "node",
-        "server.js",
-    )
-
+class LspCaosPlugin(LspPlugin):
     @classmethod
-    def required_node_version(cls) -> str:
-        """
-        Testing playground at https://semver.npmjs.com
-        And `0.0.0` means "no restrictions".
-        """
-        return ">=14"
+    def on_pre_start_async(cls, context: OnPreStartContext) -> None:
+        package_name = cls.plugin_storage_path.name
+        NodeManager.on_pre_start_async(
+            context,
+            cls.plugin_storage_path,
+            ResourcePath("Packages", package_name, "language-server"),
+            Path("node_modules", "caos-language-server", "dist", "node", "server.js"),
+            node_version_requirement=">=14",
+        )
